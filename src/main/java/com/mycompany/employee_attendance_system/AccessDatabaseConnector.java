@@ -21,11 +21,13 @@ package com.mycompany.employee_attendance_system;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
 /**
  *
  * @author Neil Patrick
  */
 public class AccessDatabaseConnector {
+
     // JDBC URL, username, and password of the database to connect
     private static final String DATABASE = "employee_attendance_system";
     private static final String PORT = "3306";
@@ -33,7 +35,6 @@ public class AccessDatabaseConnector {
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
 
-    
     // Method to establish a connection to the Access database
     public static Connection connect() {
         Connection connection = null;
@@ -47,7 +48,7 @@ public class AccessDatabaseConnector {
         }
         return connection;
     }
-    
+
     // Method to close the database connection
     public static void closeConnection(Connection connection) {
         try {
@@ -59,5 +60,5 @@ public class AccessDatabaseConnector {
             // Handle any errors
             System.err.println("Error closing the connection: " + e.getMessage());
         }
-    }    
+    }
 }
