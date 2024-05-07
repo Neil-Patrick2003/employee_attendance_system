@@ -24,10 +24,9 @@ public class Employee {
     boolean is_admin;
     String hiring_date;
     int department_id;
-    double overtime_rate;
     String position;
     
-    public Employee(int id, String last_name, String first_name, String email, String phone_number, String address, String username, String password, boolean is_admin, int department_id, double overtime_rate, String postion){
+    public Employee(int id, String last_name, String first_name, String email, String phone_number, String address, String username, String password, boolean is_admin,String hiring_date, int department_id, String postion){
         this.id = id;
         this.last_name = last_name;
         this.first_name = first_name;
@@ -39,7 +38,6 @@ public class Employee {
         this.is_admin = is_admin;
         this.hiring_date = hiring_date;
         this.department_id = department_id;
-        this.overtime_rate = overtime_rate;
         this.position = position;
         
         

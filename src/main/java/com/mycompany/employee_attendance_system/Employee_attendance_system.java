@@ -16,14 +16,14 @@ public class Employee_attendance_system {
     public static void main(String[] args) {
         
         
-        EmployeeService.addEmployee("mulingbayan", "neil", "neil@gmail.com", "09215046150", "magahis", "neil123456", "neil123456", true, 1, 1000.00, "hr");
-
-
-        MainFrame LoginFame = new MainFrame();
-        LoginFame.setVisible(true);
-        LoginFame.pack();
-        LoginFame.setVisible(true);
-        LoginFame.setLocationRelativeTo(null);
+//        JFrame frame = new JFrame("Film Equipment Rental Service");
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       // EmployeeService.addEmployee("mulingbayan", "neil", "neil@gmail.com", "09215046150", "magahis", "neil123456", "neil123456", true, 1, 1000.00, "hr");
+        MainFrame LoginFrame = new MainFrame();
+        LoginFrame.setVisible(true);
+        LoginFrame.pack();
+        LoginFrame.setVisible(true);
+        LoginFrame.setLocationRelativeTo(null);
 
     }
 }

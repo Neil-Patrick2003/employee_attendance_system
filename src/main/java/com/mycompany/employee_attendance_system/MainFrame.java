@@ -4,6 +4,11 @@
  */
 package com.mycompany.employee_attendance_system;
 
+import java.awt.Window;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author Neil Patrick
@@ -30,10 +35,10 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        username_textfeild = new javax.swing.JTextField();
+        password_textfeild = new javax.swing.JPasswordField();
+        SignIN_button = new javax.swing.JButton();
+        signup_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LOGIN");
@@ -53,28 +58,38 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(30, 144, 255));
         jLabel2.setText("Login");
 
-        jTextField1.setBackground(new java.awt.Color(220, 220, 220));
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(169, 169, 169));
-        jTextField1.setText("  Type Your Username");
-        jTextField1.setBorder(null);
+        username_textfeild.setBackground(new java.awt.Color(220, 220, 220));
+        username_textfeild.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        username_textfeild.setForeground(new java.awt.Color(169, 169, 169));
+        username_textfeild.setText("  Type Your Username");
+        username_textfeild.setBorder(null);
 
-        jPasswordField1.setBackground(new java.awt.Color(220, 220, 220));
-        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(169, 169, 169));
-        jPasswordField1.setText("  Type Your Password");
-        jPasswordField1.setBorder(null);
+        password_textfeild.setBackground(new java.awt.Color(220, 220, 220));
+        password_textfeild.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        password_textfeild.setForeground(new java.awt.Color(169, 169, 169));
+        password_textfeild.setText("  Type Your Password");
+        password_textfeild.setBorder(null);
 
-        jButton1.setBackground(new java.awt.Color(30, 144, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Signin");
+        SignIN_button.setBackground(new java.awt.Color(30, 144, 255));
+        SignIN_button.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        SignIN_button.setForeground(new java.awt.Color(255, 255, 255));
+        SignIN_button.setText("Signin");
+        SignIN_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignIN_buttonActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(30, 144, 255));
-        jButton2.setText("Sign up");
-        jButton2.setBorder(null);
+        signup_button.setBackground(new java.awt.Color(255, 255, 255));
+        signup_button.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        signup_button.setForeground(new java.awt.Color(30, 144, 255));
+        signup_button.setText("Sign up");
+        signup_button.setBorder(null);
+        signup_button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signup_buttonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -90,11 +105,11 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(110, 110, 110))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(signup_button, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jPasswordField1)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(password_textfeild)
+                                .addComponent(username_textfeild, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                                .addComponent(SignIN_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(49, 49, 49))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -105,13 +120,13 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(username_textfeild, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(password_textfeild, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SignIN_button, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(signup_button)
                 .addContainerGap(95, Short.MAX_VALUE))
         );
 
@@ -138,19 +153,65 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void SignIN_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignIN_buttonActionPerformed
+        // TODO add your handling code here:
+
+        String username = username_textfeild.getText();
+        char[] passwordChars = password_textfeild.getPassword();
+        String password = new String(passwordChars);
+
+        Employee employee = EmployeeService.getByUsernameAndPassword(username, password);
+
+        if (employee != null) {
+            // If the employee object is not null (i.e., the login was successful)
+            System.out.println("Login successful");
+
+            // Create and display the EmployeeDashboard frame
+            EmployeeDashboard employeeDash = new EmployeeDashboard();
+            employeeDash.setVisible(true);
+            employeeDash.setLocationRelativeTo(null);
+            this.dispose();
+        } else {
+            // If the employee object is null (i.e., the login failed)
+            System.out.println("Login failed. Invalid username or password.");
+            // You can add code here to display an error message or perform other actions
+        }
+
+//        JFrame m    ainFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+//        this.setVisible(false);
+//        mainFrame.remove(this);
+//        mainFrame.dispose();
+//                CustomerDashboardFrame CustomerDash = new CustomerDashboardFrame();
+//                CustomerDash.setAuthCustomer(customer);
+//                CustomerDash.setVisible(true);
+//                CustomerDash.setLocationRelativeTo(null);
+
+    }//GEN-LAST:event_SignIN_buttonActionPerformed
+
+    private void signup_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signup_buttonMouseClicked
+        // TODO add your handling code here:
+        // Create a new JFrame to contain the EmployeeSignUp panel
+        JFrame signupFrame = new JFrame("Film Equipment Rental Service");
+        signupFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        signupFrame.add(new EmployeeSignUp());
+        signupFrame.pack(); // Resize the frame to fit the component
+        signupFrame.setVisible(true);
+        signupFrame.setLocationRelativeTo(null);
+        
+    }//GEN-LAST:event_signup_buttonMouseClicked
+
     /**
      * @param args the command line arguments
      */
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton SignIN_button;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField password_textfeild;
+    private javax.swing.JButton signup_button;
+    private javax.swing.JTextField username_textfeild;
     // End of variables declaration//GEN-END:variables
 }
