@@ -26,7 +26,7 @@ public class Employee {
     int department_id;
     String position;
     
-    public Employee(int id, String last_name, String first_name, String email, String phone_number, String address, String username, String password, boolean is_admin,String hiring_date, int department_id, String postion){
+    public Employee(int id, String last_name, String first_name, String email, String phone_number, String address, String username, String password, boolean is_admin,String hiring_date, int department_id, String position){
         this.id = id;
         this.last_name = last_name;
         this.first_name = first_name;

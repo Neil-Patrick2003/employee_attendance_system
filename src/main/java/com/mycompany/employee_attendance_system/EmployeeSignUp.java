@@ -4,6 +4,9 @@
  */
 package com.mycompany.employee_attendance_system;
 
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Neil Patrick
@@ -15,6 +18,16 @@ public class EmployeeSignUp extends javax.swing.JPanel {
      */
     public EmployeeSignUp() {
         initComponents();
+
+        List<Department> departments = DepartmentService.getAllDepartments();
+
+        for (int i = 0; i < departments.size(); i++) {
+            departmentComboBOx.addItem(departments.get(i).department_name);
+        }
+
+        
+        
+
     }
 
     /**
@@ -39,7 +52,6 @@ public class EmployeeSignUp extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         PositionText = new javax.swing.JTextField();
-        department = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -50,6 +62,7 @@ public class EmployeeSignUp extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         SignupButton = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
+        departmentComboBOx = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -116,11 +129,6 @@ public class EmployeeSignUp extends javax.swing.JPanel {
         PositionText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         PositionText.setForeground(new java.awt.Color(102, 102, 102));
         PositionText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
-
-        department.setBackground(new java.awt.Color(255, 255, 255));
-        department.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        department.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        department.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -232,8 +240,8 @@ public class EmployeeSignUp extends javax.swing.JPanel {
                                 .addGap(267, 267, 267))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(department, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(116, 116, 116)
+                                .addComponent(departmentComboBOx, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -276,12 +284,10 @@ public class EmployeeSignUp extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PositionText, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(department, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(7, 7, 7)))
-                        .addGap(25, 25, 25)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(departmentComboBOx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
                         .addComponent(jLabel9))
                     .addComponent(SignupButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
@@ -322,6 +328,7 @@ public class EmployeeSignUp extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void SignupButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignupButtonMouseClicked
         // TODO add your handling code here:
         String last_name = LastNameText.getText();
@@ -330,17 +337,28 @@ public class EmployeeSignUp extends javax.swing.JPanel {
         String phone_number = PhoneText.getText();
         String address = AddressText.getText();
         String username = UsernameText.getText();
+
         String position = PositionText.getText();
         Department department = null;
 
-        if (this.department.getSelectedIndex() >= 0) {
-            department = DepartmentService.getDepartmentByName(this.department.getSelectedItem().toString());
+        if (departmentComboBOx.getSelectedIndex() >= 0) {
+            department = DepartmentService.getDepartmentByName(departmentComboBOx.getSelectedItem().toString());
         }
-        
+
         char[] passwordChars = PasswordText.getPassword();
         String password = new String(passwordChars);
-        
-        
+
+        System.out.println("TETETEETE");
+        System.out.println(last_name + first_name + email + phone_number + address + username + password + position + department);
+
+        if (FirstNameText.getText().equals("") || FirstNameText.getText().equals("") || EmailText.getText().equals("") || PhoneText.getText().equals("") || AddressText.getText().equals("") || UsernameText.getText().equals("") || PositionText.getText().equals("") || department == null) {
+            JOptionPane.showMessageDialog(null, "Please Complete the form.");
+
+        } else {
+            EmployeeService.addEmployee(last_name, first_name, email, phone_number, address, username, password, false, department.department_id, position);
+        }
+
+
     }//GEN-LAST:event_SignupButtonMouseClicked
 
 
@@ -354,7 +372,7 @@ public class EmployeeSignUp extends javax.swing.JPanel {
     private javax.swing.JTextField PositionText;
     private javax.swing.JButton SignupButton;
     private javax.swing.JTextField UsernameText;
-    private javax.swing.JComboBox<String> department;
+    private javax.swing.JComboBox<String> departmentComboBOx;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

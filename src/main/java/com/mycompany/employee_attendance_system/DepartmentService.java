@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -45,7 +47,7 @@ public class DepartmentService {
     
     public static Department getDepartmentByName(String department_name) {
         String selectQuery = "SELECT * FROM " + DEPARTMENTS_TABLE + " WHERE " + DEPARTMENT_NAME_COLUMN + " = '" + department_name + "' LIMIT 1;";
-
+        System.out.println(selectQuery);
         Connection conn = AccessDatabaseConnector.connect();
         try {
             Statement statement = conn.createStatement();
@@ -56,8 +58,8 @@ public class DepartmentService {
 
             // Process the results
             while (resultSet.next()) {
-                int deparment_id = resultSet.getInt(DEPARTMENT_ID_COLUMN);
-                department = new Department(deparment_id, department_name);
+                int department_id = resultSet.getInt(DEPARTMENT_ID_COLUMN);
+                department = new Department(department_id, department_name);
             }
 
             // Close the result set and statement
@@ -65,6 +67,40 @@ public class DepartmentService {
             statement.close();
 
             return department;
+        } catch (SQLException e) {
+            System.out.print(e);
+        } finally {
+            AccessDatabaseConnector.closeConnection(conn);
+        }
+
+        return null;
+    }
+    
+    public static List getAllDepartments() {
+        List<Department> departments = new ArrayList<>();
+
+        Connection conn = AccessDatabaseConnector.connect();
+        try {
+            Statement statement = conn.createStatement();
+
+            // Execute a SELECT query
+            String selectQuery = "SELECT * FROM " + DEPARTMENTS_TABLE;
+            ResultSet resultSet = statement.executeQuery(selectQuery);
+
+            // Process the results
+            while (resultSet.next()) {
+                // Retrieve data from the result set
+                int id = resultSet.getInt(DEPARTMENT_ID_COLUMN);
+                String name = resultSet.getString(DEPARTMENT_NAME_COLUMN);
+                Department department = new Department(id, name);
+                departments.add(department);
+            }
+
+            // Close the result set and statement
+            resultSet.close();
+            statement.close();
+
+            return departments;
         } catch (SQLException e) {
             System.out.print(e);
         } finally {
