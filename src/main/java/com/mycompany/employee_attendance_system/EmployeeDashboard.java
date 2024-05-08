@@ -23,8 +23,10 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     public EmployeeDashboard() {
         initComponents();
         refreshCustomerList();
+
+        
+
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -78,7 +80,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        AddLeaveReqButton = new javax.swing.JButton();
         ManageTab = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -580,15 +582,15 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("My Time Off/Leave Request");
 
-        jButton1.setBackground(new java.awt.Color(50, 205, 50));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Neil Patrick\\Downloads\\icons8-plus-30 (2).png")); // NOI18N
-        jButton1.setText("Add Time Off/Leave Request");
-        jButton1.setBorder(null);
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        AddLeaveReqButton.setBackground(new java.awt.Color(50, 205, 50));
+        AddLeaveReqButton.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        AddLeaveReqButton.setForeground(new java.awt.Color(255, 255, 255));
+        AddLeaveReqButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Neil Patrick\\Downloads\\icons8-plus-30 (2).png")); // NOI18N
+        AddLeaveReqButton.setText("Add Time Off/Leave Request");
+        AddLeaveReqButton.setBorder(null);
+        AddLeaveReqButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                AddLeaveReqButtonMouseClicked(evt);
             }
         });
 
@@ -603,7 +605,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AddLeaveReqButton, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -617,7 +619,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                             .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)))
+                        .addComponent(AddLeaveReqButton, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -822,7 +824,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
             employeesTableModel.addRow(rowData);
         }
     }
-    
+
     void setColor(JPanel panel) {
         panel.setBackground(new Color(100, 206, 250));
     }
@@ -848,6 +850,8 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         setColor(LeaveButton);
         resetColor(MyProfileButton);
         resetColor(AdminButton);
+
+
     }//GEN-LAST:event_LeaveButtonMouseClicked
 
     private void MyProfileButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MyProfileButtonMouseClicked
@@ -868,12 +872,12 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         setColor(AdminButton);
     }//GEN-LAST:event_AdminButtonMouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void AddLeaveReqButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddLeaveReqButtonMouseClicked
         // TODO add your handling code here:
         AddLeaveReqForm leaveForm = new AddLeaveReqForm();
         leaveForm.setVisible(true);
         leaveForm.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_AddLeaveReqButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -911,6 +915,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddLeaveReqButton;
     private javax.swing.JPanel AddLeaveReqForm;
     private javax.swing.JPanel AdminButton;
     private javax.swing.JButton Check_In_Button;
@@ -927,7 +932,6 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel NameLabel;
     private javax.swing.JPanel ProfileTab;
     private javax.swing.JTabbedPane RIghtPanelTabbed;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

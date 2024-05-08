@@ -3,6 +3,8 @@
  */
 package com.mycompany.employee_attendance_system;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 import javax.swing.*;
@@ -16,6 +18,18 @@ public class Employee_attendance_system {
     public static void main(String[] args) {
         
         
+        
+        
+//        Timestamp timeIn = new Timestamp(System.currentTimeMillis());
+//        System.out.println("Current Timestamp: " + timeIn);
+//        
+//        Timestamp timeOut = new Timestamp(System.currentTimeMillis());
+//        System.out.println("Current Timestamp: " + timeOut);
+//        
+//        LocalDate currentDate = LocalDate.now();
+//        System.out.println("Current Date: " + currentDate);
+//        
+//        AttendanceRecordService.addAttendanceRecord(currentDate, timeIn, timeOut, 0, "Present");
         
 //        JFrame frame = new JFrame("Film Equipment Rental Service");
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
