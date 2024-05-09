@@ -27,6 +27,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     public EmployeeDashboard() {
         initComponents();
         refreshCustomerList();
+        refreshLeaveRequestList();
 
     }
     
@@ -84,7 +85,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         LeaveTabbed = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        LeaveRequestTable = new javax.swing.JTable();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         AddLeaveReqButton = new javax.swing.JButton();
@@ -115,9 +116,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(220, 220, 220));
-        setMaximumSize(new java.awt.Dimension(900, 600));
         setMinimumSize(new java.awt.Dimension(900, 600));
-        setPreferredSize(new java.awt.Dimension(900, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LeftPanel.setBackground(new java.awt.Color(30, 144, 255));
@@ -551,7 +550,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                     .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 63, Short.MAX_VALUE))
+                .addGap(0, 372, Short.MAX_VALUE))
         );
 
         RIghtPanelTabbed.addTab("dashboard", DashboradTab);
@@ -563,8 +562,8 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(null);
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        LeaveRequestTable.setBackground(new java.awt.Color(255, 255, 255));
+        LeaveRequestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -583,14 +582,14 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(5).setResizable(false);
+        jScrollPane1.setViewportView(LeaveRequestTable);
+        if (LeaveRequestTable.getColumnModel().getColumnCount() > 0) {
+            LeaveRequestTable.getColumnModel().getColumn(0).setResizable(false);
+            LeaveRequestTable.getColumnModel().getColumn(1).setResizable(false);
+            LeaveRequestTable.getColumnModel().getColumn(2).setResizable(false);
+            LeaveRequestTable.getColumnModel().getColumn(3).setResizable(false);
+            LeaveRequestTable.getColumnModel().getColumn(4).setResizable(false);
+            LeaveRequestTable.getColumnModel().getColumn(5).setResizable(false);
         }
 
         jLabel20.setIcon(new javax.swing.ImageIcon("C:\\Users\\Neil Patrick\\Downloads\\icons8-briefcase-30.png")); // NOI18N
@@ -638,7 +637,8 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(AddLeaveReqButton, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
         );
 
         javax.swing.GroupLayout LeaveTabbedLayout = new javax.swing.GroupLayout(LeaveTabbed);
@@ -653,7 +653,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         LeaveTabbedLayout.setVerticalGroup(
             LeaveTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LeaveTabbedLayout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -908,7 +908,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         EmployeeTabLayout.setVerticalGroup(
             EmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EmployeeTabLayout.createSequentialGroup()
-                .addContainerGap(101, Short.MAX_VALUE)
+                .addContainerGap(410, Short.MAX_VALUE)
                 .addComponent(nameLabel)
                 .addGap(43, 43, 43)
                 .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -933,6 +933,22 @@ public class EmployeeDashboard extends javax.swing.JFrame {
             Employee employee = employees.get(i);
             Object[] rowData = {employee.id, employee.last_name, employee.first_name, employee.email, employee.phone_number, employee.address, employee.username, employee.is_admin, employee.hiring_date, employee.department_id, employee.position};
             employeesTableModel.addRow(rowData);
+        }
+    }
+    
+    // refresh leave request list in admin 
+    private void refreshLeaveRequestList() {
+        DefaultTableModel leaveReqDefaultTableModel = (DefaultTableModel) LeaveRequestTable.getModel();
+        
+        List<LeaveRequest> leaveRequests = LeaveRequestService.getAllLeaveRequests();
+        leaveReqDefaultTableModel.setRowCount(0);
+
+        System.out.println(leaveRequests.size());
+
+        for (int i = 0; i < leaveRequests.size(); i++) {
+            LeaveRequest leaveRequest = leaveRequests.get(i);
+//            Object[] rowData = {leaveRequest.};
+//            employeesTableModel.addRow(rowData);
         }
     }
 
@@ -1044,6 +1060,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel FirstNameLabel;
     private javax.swing.JLabel LastNameLabel;
     private javax.swing.JPanel LeaveButton;
+    private javax.swing.JTable LeaveRequestTable;
     private javax.swing.JPanel LeaveTabbed;
     private javax.swing.JPanel LeftPanel;
     private javax.swing.JScrollPane ManageTab;
@@ -1094,7 +1111,6 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JLabel nameLabel;
     // End of variables declaration//GEN-END:variables
