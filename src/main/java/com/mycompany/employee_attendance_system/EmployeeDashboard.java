@@ -7,7 +7,9 @@ package com.mycompany.employee_attendance_system;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,6 +19,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class EmployeeDashboard extends javax.swing.JFrame {
 
+    Employee authenticatedEmployee;
+
     /**
      * Creates new form EmployeeDashboard
      */
@@ -24,8 +28,10 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         initComponents();
         refreshCustomerList();
 
-        
-
+    }
+    
+    public void setAuthenticatedEmployee(Employee employee) {
+        this.authenticatedEmployee = employee;
     }
 
     /**
@@ -87,6 +93,15 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         jPanel23 = new javax.swing.JPanel();
         ProfileTab = new javax.swing.JPanel();
+        FirstNameLabel = new javax.swing.JPanel();
+        LastNameLabel = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        EmailLabel = new javax.swing.JLabel();
+        NumberLabel = new javax.swing.JLabel();
+        AddressLabel = new javax.swing.JLabel();
+        PositionLabel = new javax.swing.JLabel();
+        DepartmentLabel = new javax.swing.JLabel();
+        TItleLabel = new javax.swing.JLabel();
         AddLeaveReqForm = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -95,6 +110,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         EmployeeTab = new javax.swing.JPanel();
         jScrollPane = new javax.swing.JScrollPane();
         EmployeeTable = new javax.swing.JTable();
+        nameLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(220, 220, 220));
@@ -686,15 +702,100 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
         RIghtPanelTabbed.addTab("tab4", ManageTab);
 
+        ProfileTab.setBackground(new java.awt.Color(204, 204, 204));
+
+        FirstNameLabel.setBackground(new java.awt.Color(255, 255, 255));
+
+        LastNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        LastNameLabel.setForeground(new java.awt.Color(51, 51, 51));
+        LastNameLabel.setText("Last Name: ");
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel25.setText("First Name: ");
+
+        EmailLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        EmailLabel.setForeground(new java.awt.Color(51, 51, 51));
+        EmailLabel.setText("Email");
+
+        NumberLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        NumberLabel.setForeground(new java.awt.Color(51, 51, 51));
+        NumberLabel.setText("Phone Number");
+
+        AddressLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        AddressLabel.setForeground(new java.awt.Color(51, 51, 51));
+        AddressLabel.setText("Address");
+
+        PositionLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        PositionLabel.setForeground(new java.awt.Color(51, 51, 51));
+        PositionLabel.setText("Position");
+
+        DepartmentLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        DepartmentLabel.setForeground(new java.awt.Color(51, 51, 51));
+        DepartmentLabel.setText("Department");
+
+        javax.swing.GroupLayout FirstNameLabelLayout = new javax.swing.GroupLayout(FirstNameLabel);
+        FirstNameLabel.setLayout(FirstNameLabelLayout);
+        FirstNameLabelLayout.setHorizontalGroup(
+            FirstNameLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FirstNameLabelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(FirstNameLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LastNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PositionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DepartmentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        FirstNameLabelLayout.setVerticalGroup(
+            FirstNameLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FirstNameLabelLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(LastNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(EmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(NumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(AddressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(PositionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(DepartmentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(426, Short.MAX_VALUE))
+        );
+
+        TItleLabel.setFont(new java.awt.Font("Serif", 1, 36)); // NOI18N
+        TItleLabel.setForeground(new java.awt.Color(51, 51, 51));
+        TItleLabel.setText("My Personal Information");
+
         javax.swing.GroupLayout ProfileTabLayout = new javax.swing.GroupLayout(ProfileTab);
         ProfileTab.setLayout(ProfileTabLayout);
         ProfileTabLayout.setHorizontalGroup(
             ProfileTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 705, Short.MAX_VALUE)
+            .addGroup(ProfileTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ProfileTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(FirstNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(ProfileTabLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(TItleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 225, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         ProfileTabLayout.setVerticalGroup(
             ProfileTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 603, Short.MAX_VALUE)
+            .addGroup(ProfileTabLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(TItleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(FirstNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         RIghtPanelTabbed.addTab("tab4", ProfileTab);
@@ -787,6 +888,9 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         });
         jScrollPane.setViewportView(EmployeeTable);
 
+        nameLabel.setForeground(new java.awt.Color(51, 255, 0));
+        nameLabel.setText("jLabel24");
+
         javax.swing.GroupLayout EmployeeTabLayout = new javax.swing.GroupLayout(EmployeeTab);
         EmployeeTab.setLayout(EmployeeTabLayout);
         EmployeeTabLayout.setHorizontalGroup(
@@ -795,11 +899,17 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
+            .addGroup(EmployeeTabLayout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         EmployeeTabLayout.setVerticalGroup(
             EmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EmployeeTabLayout.createSequentialGroup()
-                .addContainerGap(159, Short.MAX_VALUE)
+                .addContainerGap(101, Short.MAX_VALUE)
+                .addComponent(nameLabel)
+                .addGap(43, 43, 43)
                 .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(114, 114, 114))
         );
@@ -850,6 +960,8 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         setColor(LeaveButton);
         resetColor(MyProfileButton);
         resetColor(AdminButton);
+
+        System.out.println("hihihihihihi");
 
 
     }//GEN-LAST:event_LeaveButtonMouseClicked
@@ -917,21 +1029,29 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddLeaveReqButton;
     private javax.swing.JPanel AddLeaveReqForm;
+    private javax.swing.JLabel AddressLabel;
     private javax.swing.JPanel AdminButton;
     private javax.swing.JButton Check_In_Button;
     private javax.swing.JButton Check_In_Button1;
     private javax.swing.JPanel DashboardButton;
     private javax.swing.JPanel DashboradTab;
+    private javax.swing.JLabel DepartmentLabel;
+    private javax.swing.JLabel EmailLabel;
     private javax.swing.JPanel EmployeeTab;
     private javax.swing.JTable EmployeeTable;
+    private javax.swing.JPanel FirstNameLabel;
+    private javax.swing.JLabel LastNameLabel;
     private javax.swing.JPanel LeaveButton;
     private javax.swing.JPanel LeaveTabbed;
     private javax.swing.JPanel LeftPanel;
     private javax.swing.JScrollPane ManageTab;
     private javax.swing.JPanel MyProfileButton;
     private javax.swing.JLabel NameLabel;
+    private javax.swing.JLabel NumberLabel;
+    private javax.swing.JLabel PositionLabel;
     private javax.swing.JPanel ProfileTab;
     private javax.swing.JTabbedPane RIghtPanelTabbed;
+    private javax.swing.JLabel TItleLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -948,6 +1068,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -973,5 +1094,6 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JLabel nameLabel;
     // End of variables declaration//GEN-END:variables
 }

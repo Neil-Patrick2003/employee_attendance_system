@@ -109,9 +109,9 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jDateChooser1" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="StartDateChooser" min="-2" pref="100" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jDateChooser2" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="EndDateChooser" min="-2" pref="100" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jLabel2" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
                                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -142,8 +142,8 @@
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jDateChooser1" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jDateChooser2" alignment="1" min="-2" pref="19" max="-2" attributes="0"/>
+                          <Component id="StartDateChooser" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="EndDateChooser" alignment="1" min="-2" pref="19" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -197,14 +197,14 @@
                 <Property name="text" type="java.lang.String" value="Start Date             -                End Date"/>
               </Properties>
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+            <Component class="com.toedter.calendar.JDateChooser" name="StartDateChooser">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
+            <Component class="com.toedter.calendar.JDateChooser" name="EndDateChooser">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>

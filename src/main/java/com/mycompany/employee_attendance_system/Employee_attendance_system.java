@@ -3,6 +3,7 @@
  */
 package com.mycompany.employee_attendance_system;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
@@ -16,6 +17,11 @@ import javax.swing.*;
 public class Employee_attendance_system {
 
     public static void main(String[] args) {
+        
+        Date startDate = Date.valueOf(LocalDate.MAX);
+        Date endDate = Date.valueOf(LocalDate.MAX);
+        
+        LeaveRequestService.addLeaveReq(startDate, endDate, "Pending", "emergency", 1, 4);
         
         
         
@@ -39,6 +45,8 @@ public class Employee_attendance_system {
         LoginFrame.pack();
         LoginFrame.setVisible(true);
         LoginFrame.setLocationRelativeTo(null);
+        
+        
 
     }
 }

@@ -43,8 +43,8 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         LeaveTypeComBox = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        StartDateChooser = new com.toedter.calendar.JDateChooser();
+        EndDateChooser = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -75,7 +75,7 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Start Date             -                End Date");
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
+        StartDateChooser.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
@@ -129,9 +129,9 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(StartDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(EndDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel3))
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -154,8 +154,8 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(StartDateChooser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EndDateChooser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -212,13 +212,6 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SubmitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmitButtonMouseClicked
-        // TODO add your handling code here:
-        AddLeaveReqForm leaveForm = new AddLeaveReqForm();
-        leaveForm.setVisible(false);
-        leaveForm.dispose();
-    }//GEN-LAST:event_SubmitButtonMouseClicked
-
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CancelButtonActionPerformed
@@ -227,6 +220,11 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_CancelButtonMouseClicked
+
+    private void SubmitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmitButtonMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_SubmitButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -265,10 +263,10 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CancelButton;
+    private com.toedter.calendar.JDateChooser EndDateChooser;
     private javax.swing.JComboBox<String> LeaveTypeComBox;
+    private com.toedter.calendar.JDateChooser StartDateChooser;
     private javax.swing.JButton SubmitButton;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

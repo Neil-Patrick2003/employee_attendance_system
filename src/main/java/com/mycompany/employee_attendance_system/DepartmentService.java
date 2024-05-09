@@ -43,7 +43,7 @@ public class DepartmentService {
         } finally {
             AccessDatabaseConnector.closeConnection(conn);
         }
-    }
+    }     
     
     public static Department getDepartmentByName(String department_name) {
         String selectQuery = "SELECT * FROM " + DEPARTMENTS_TABLE + " WHERE " + DEPARTMENT_NAME_COLUMN + " = '" + department_name + "' LIMIT 1;";

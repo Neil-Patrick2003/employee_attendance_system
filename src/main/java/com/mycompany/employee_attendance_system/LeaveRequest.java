@@ -18,6 +18,25 @@ public class LeaveRequest {
     String notes;
     int leave_type_id;
     int employee_id;
+    Employee employee;
+    
+    public LeaveRequest(int request_id,Date startDate,Date endDate, boolean status, String notes, int leave_type_id, int employee_id){
+        this.request_id = request_id;
+        this.startDate = startDate;
+        this.EndDate = endDate;
+        this.status = this.status;
+        this.notes = notes;
+        this.leave_type_id = leave_type_id;
+        this.employee_id = employee_id;
+    }
+    
+    public void setCustomer(Employee employee) {
+        this.employee = employee;
+    }
+    
+    public void setEmployee_id(int employee_id) {
+        this.employee_id = employee_id;
+    }
     
     
 }
