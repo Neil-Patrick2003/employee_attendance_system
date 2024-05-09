@@ -18,14 +18,14 @@ import java.sql.Statement;
 public class LeaveRequestService {
     public static final String LEAVE_REQUESTS_TABLE = "leave_requests";
     public static final String REQUEST_ID_COLUMN = "request_id";
-    public static final String START_DATE_COLUMN = "startDate";
-    public static final String END_DATE_COLUMN = "endDate";
+    public static final String START_DATE_COLUMN = "start_date";
+    public static final String END_DATE_COLUMN = "end_date";
     public static final String STATUS_COLUMN = "status";  
     public static final String NOTES_COLUMN = "notes";
     public static final String LEAVE_TYPE_ID_COLUMN = "leave_type_id";
     public static final String EMPLOYEE_ID_COLUMN = "employee_id";
     
-    public static void addLeaveReq(Date staDate, Date enDate, String status, String notes,  int leave_type_id, int employee_id) {
+    public static void addLeaveReq(Date startDate, Date endDate, String status, String notes,  int leave_type_id, int employee_id) {
         Connection conn = AccessDatabaseConnector.connect();
         try {
 
@@ -33,7 +33,7 @@ public class LeaveRequestService {
             try (Statement statement = conn.createStatement()) {
                 // Execute an INSERT query
 
-                String insertQuery = "INSERT INTO " + LEAVE_REQUESTS_TABLE + " (" + START_DATE_COLUMN + ", " + END_DATE_COLUMN + ", " + STATUS_COLUMN + ", " + NOTES_COLUMN + ", " + LEAVE_TYPE_ID_COLUMN + ", " + EMPLOYEE_ID_COLUMN + " ) VALUES ('" + staDate + "', '" + enDate + "', '" + status + "', '" + notes + "', '" + leave_type_id + "', '" + employee_id + "');";
+                String insertQuery = "INSERT INTO " + LEAVE_REQUESTS_TABLE + " (" + START_DATE_COLUMN + ", " + END_DATE_COLUMN + ", " + STATUS_COLUMN + ", " + NOTES_COLUMN + ", " + LEAVE_TYPE_ID_COLUMN + ", " + EMPLOYEE_ID_COLUMN + " ) VALUES ('" + startDate + "', '" + endDate + "', '" + status + "', '" + notes + "', '" + leave_type_id + "', '" + employee_id + "');";
                 System.out.println(insertQuery);
                 int rowsAffected = statement.executeUpdate(insertQuery);
                 // Check the number of rows affected
@@ -49,6 +49,8 @@ public class LeaveRequestService {
         } finally {
             AccessDatabaseConnector.closeConnection(conn);
         }
-    }    
+    }
+
+    
     
 }

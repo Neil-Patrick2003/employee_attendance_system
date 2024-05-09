@@ -21,7 +21,7 @@ public class Employee_attendance_system {
         Date startDate = Date.valueOf(LocalDate.MAX);
         Date endDate = Date.valueOf(LocalDate.MAX);
         
-        LeaveRequestService.addLeaveReq(startDate, endDate, "Pending", "emergency", 1, 4);
+       // LeaveRequestService.addLeaveReq(startDate, endDate, "Pending", "emergency", 1, d);
         
         
         

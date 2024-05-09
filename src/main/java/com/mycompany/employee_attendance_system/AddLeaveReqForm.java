@@ -6,13 +6,18 @@ package com.mycompany.employee_attendance_system;
 
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.io.ObjectInputFilter;
+import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Neil Patrick
  */
 public class AddLeaveReqForm extends javax.swing.JFrame {
+    
+    Employee authenticatedEmployee;
 
     /**
      * Creates new form AddLeaveReqForm
@@ -26,6 +31,10 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
         }
     }
     
+    public void setAuthenticatedEmployee(Employee employee) {
+        this.authenticatedEmployee = employee;
+    }
+
     
 
     /**
@@ -47,7 +56,7 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
         EndDateChooser = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        noteTextArea = new javax.swing.JTextArea();
         jSeparator1 = new javax.swing.JSeparator();
         SubmitButton = new javax.swing.JButton();
         CancelButton = new javax.swing.JButton();
@@ -81,10 +90,10 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Notes");
 
-        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        noteTextArea.setBackground(new java.awt.Color(255, 255, 255));
+        noteTextArea.setColumns(20);
+        noteTextArea.setRows(5);
+        jScrollPane1.setViewportView(noteTextArea);
 
         jSeparator1.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -223,6 +232,36 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
 
     private void SubmitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmitButtonMouseClicked
         // TODO add your handling code here:
+        LeaveType leaveType = null;
+
+
+        if (LeaveTypeComBox.getSelectedIndex() >= 0) {
+            leaveType = LeaveTypeService.getLeaveTypeByName(LeaveTypeComBox.getSelectedItem().toString());
+        }
+        
+        Date startDate = StartDateChooser.getDate();
+        Date endDate = EndDateChooser.getDate();
+        
+        java.sql.Date sqlStartDate = new java.sql.Date(startDate.getTime());
+        java.sql.Date sqlEndDate = new java.sql.Date(endDate.getTime());
+        
+        String notes = noteTextArea.getText();
+        
+        LeaveRequestService.addLeaveReq(sqlStartDate, sqlEndDate, "peding", notes, leaveType.leave_type_id, this.authenticatedEmployee.id);
+        
+        
+        
+//        if (FirstNameText.getText().equals("") || FirstNameText.getText().equals("") || EmailText.getText().equals("") || PhoneText.getText().equals("") || AddressText.getText().equals("") || UsernameText.getText().equals("") || PositionText.getText().equals("") || department == null) {
+//            JOptionPane.showMessageDialog(null, "Please Complete the form.");
+//
+//        } else {
+//            EmployeeService.addEmployee(last_name, first_name, email, phone_number, address, username, password, false, department.department_id, position);
+//        }
+        
+        
+        
+        
+        
         
     }//GEN-LAST:event_SubmitButtonMouseClicked
 
@@ -276,6 +315,6 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea noteTextArea;
     // End of variables declaration//GEN-END:variables
 }

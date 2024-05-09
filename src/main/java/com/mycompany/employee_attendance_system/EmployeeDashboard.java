@@ -32,6 +32,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     
     public void setAuthenticatedEmployee(Employee employee) {
         this.authenticatedEmployee = employee;
+        System.out.print(this.authenticatedEmployee.first_name);
     }
 
     /**
@@ -989,6 +990,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         AddLeaveReqForm leaveForm = new AddLeaveReqForm();
         leaveForm.setVisible(true);
         leaveForm.setLocationRelativeTo(null);
+        leaveForm.setAuthenticatedEmployee(authenticatedEmployee);
     }//GEN-LAST:event_AddLeaveReqButtonMouseClicked
 
     /**
