@@ -3,9 +3,6 @@
  */
 package com.mycompany.employee_attendance_system;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -15,14 +12,17 @@ import java.util.List;
 public class Employee_attendance_system {
 
     public static void main(String[] args) {
-        
-        
-        
-       // LeaveRequestService.addLeaveReq(startDate, endDate, "Pending", "emergency", 1, d);
-        
-        
-        
-        
+
+         List<Employee> employees = EmployeeService.getAllEmployees();
+         
+         for (int i = 0; i < employees.size(); i++) {
+             Employee employee =  employees.get(i);
+             
+             System.out.println(employee.first_name);
+             System.out.println(employee.department.department_name);
+            
+        }
+        // LeaveRequestService.addLeaveReq(startDate, endDate, "Pending", "emergency", 1, d);
 //        Timestamp timeIn = new Timestamp(System.currentTimeMillis());
 //        System.out.println("Current Timestamp: " + timeIn);
 //        
@@ -42,8 +42,5 @@ public class Employee_attendance_system {
         LoginFrame.pack();
         LoginFrame.setVisible(true);
         LoginFrame.setLocationRelativeTo(null);
-        
-        
-
     }
 }

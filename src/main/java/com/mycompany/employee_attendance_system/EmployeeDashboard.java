@@ -924,7 +924,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
     private void refreshCustomerList() {
         DefaultTableModel employeesTableModel = (DefaultTableModel) EmployeeTable.getModel();
-        List<Employee> employees = EmployeeService.getAllEmployee();
+        List<Employee> employees = EmployeeService.getAllEmployees();
         employeesTableModel.setRowCount(0);
 
         System.out.println(employees.size());
