@@ -1,10 +1,10 @@
 -- -------------------------------------------------------------
--- TablePlus 5.6.2(516)
+-- TablePlus 6.0.0(550)
 --
 -- https://tableplus.com/
 --
 -- Database: employee_attendance_system
--- Generation Time: 2024-05-08 00:57:34.5540
+-- Generation Time: 2024-05-10 14:14:33.4810
 -- -------------------------------------------------------------
 
 
@@ -27,7 +27,7 @@ CREATE TABLE `attendance_records` (
   PRIMARY KEY (`attendance_record_id`),
   KEY `attendance_records_employee_id_foreign` (`employee_id`),
   CONSTRAINT `attendance_records_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`employee_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS `departments`;
 CREATE TABLE `departments` (
@@ -35,7 +35,7 @@ CREATE TABLE `departments` (
   `department_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`department_id`),
   UNIQUE KEY `departments_department_name_unique` (`department_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS `employees`;
 CREATE TABLE `employees` (
@@ -49,12 +49,14 @@ CREATE TABLE `employees` (
   `hiring_date` date DEFAULT NULL,
   `position` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `department_id` bigint unsigned NOT NULL,
+  `phone_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`employee_id`),
   UNIQUE KEY `employees_email_unique` (`email`),
   UNIQUE KEY `employees_username_unique` (`username`),
   KEY `employees_department_id_foreign` (`department_id`),
   CONSTRAINT `employees_department_id_foreign` FOREIGN KEY (`department_id`) REFERENCES `departments` (`department_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS `holidays`;
 CREATE TABLE `holidays` (
@@ -62,7 +64,7 @@ CREATE TABLE `holidays` (
   `holiday_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `holiday_date` date NOT NULL,
   PRIMARY KEY (`holiday_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS `leave_requests`;
 CREATE TABLE `leave_requests` (
@@ -78,7 +80,7 @@ CREATE TABLE `leave_requests` (
   KEY `leave_requests_leave_type_id_foreign` (`leave_type_id`),
   CONSTRAINT `leave_requests_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`employee_id`),
   CONSTRAINT `leave_requests_leave_type_id_foreign` FOREIGN KEY (`leave_type_id`) REFERENCES `leave_types` (`leave_type_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS `leave_types`;
 CREATE TABLE `leave_types` (
@@ -86,15 +88,7 @@ CREATE TABLE `leave_types` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `leave_limit` int unsigned NOT NULL,
   PRIMARY KEY (`leave_type_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;;
-
-DROP TABLE IF EXISTS `migrations`;
-CREATE TABLE `migrations` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 
