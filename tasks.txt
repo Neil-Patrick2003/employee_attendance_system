@@ -1,9 +1,9 @@
 
 Authentication
-    - Login existing
+    - Login existing ok
         - new employee
         - non existing employee
-    - Register employee
+    - Register employee    
         - new employee
         - existing username
         - existing email
