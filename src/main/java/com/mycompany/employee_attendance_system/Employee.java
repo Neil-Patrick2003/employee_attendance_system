@@ -43,5 +43,7 @@ public class Employee {
         this.department = department;
     }
     
-    
+    public String getFullName() {
+        return this.first_name + " " + this.last_name;
+    }
 }
