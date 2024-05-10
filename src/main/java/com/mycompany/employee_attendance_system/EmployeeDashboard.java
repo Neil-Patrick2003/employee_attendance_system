@@ -931,7 +931,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
         for (int i = 0; i < employees.size(); i++) {
             Employee employee = employees.get(i);
-            Object[] rowData = {employee.id, employee.last_name, employee.first_name, employee.email, employee.phone_number, employee.address, employee.username, employee.is_admin, employee.hiring_date, employee.department_id, employee.position};
+            Object[] rowData = {employee.id, employee.last_name, employee.first_name, employee.email, employee.phone_number, employee.address, employee.username, employee.is_admin, employee.hiring_date, employee.department.department_name, employee.position};
             employeesTableModel.addRow(rowData);
         }
     }
