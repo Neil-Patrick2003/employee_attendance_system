@@ -342,7 +342,7 @@ public class EmployeeSignUp extends javax.swing.JPanel {
         Department department = null;
 
         if (departmentComboBOx.getSelectedIndex() >= 0) {
-            department = DepartmentService.getDepartmentByName(departmentComboBOx.getSelectedItem().toString());
+            
         }
 
         char[] passwordChars = PasswordText.getPassword();

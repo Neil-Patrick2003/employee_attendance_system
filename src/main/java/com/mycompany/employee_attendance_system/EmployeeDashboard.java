@@ -635,36 +635,44 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         FirstNameText.setForeground(new java.awt.Color(51, 51, 51));
         FirstNameText.setText("jTextField1");
         FirstNameText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
+        FirstNameText.setEnabled(false);
 
         LastNameText.setBackground(new java.awt.Color(255, 255, 255));
         LastNameText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         LastNameText.setForeground(new java.awt.Color(51, 51, 51));
         LastNameText.setText("jTextField1");
         LastNameText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
+        LastNameText.setEnabled(false);
 
         EmailText.setBackground(new java.awt.Color(255, 255, 255));
         EmailText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         EmailText.setForeground(new java.awt.Color(51, 51, 51));
         EmailText.setText("jTextField1");
+        EmailText.setAutoscrolls(false);
         EmailText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
+        EmailText.setEnabled(false);
 
         PhoneNumberText.setBackground(new java.awt.Color(255, 255, 255));
         PhoneNumberText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         PhoneNumberText.setForeground(new java.awt.Color(51, 51, 51));
         PhoneNumberText.setText("jTextField1");
+        PhoneNumberText.setAutoscrolls(false);
         PhoneNumberText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
+        PhoneNumberText.setEnabled(false);
 
         AddressText.setBackground(new java.awt.Color(255, 255, 255));
         AddressText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         AddressText.setForeground(new java.awt.Color(51, 51, 51));
         AddressText.setText("jTextField1");
         AddressText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
+        AddressText.setEnabled(false);
 
         PositionText.setBackground(new java.awt.Color(255, 255, 255));
         PositionText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         PositionText.setForeground(new java.awt.Color(51, 51, 51));
         PositionText.setText("jTextField1");
         PositionText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
+        PositionText.setEnabled(false);
 
         updateProfileDeptCombobox.setBackground(new java.awt.Color(255, 255, 255));
         updateProfileDeptCombobox.setForeground(new java.awt.Color(102, 102, 102));
@@ -1274,32 +1282,49 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         String phone_number = (String) PhoneNumberText.getText();
         String address = (String) AddressText.getText();
         String position = (String) PositionText.getText();
-//        String departmentId = (String) DepartmentName.getText();
+        String department_name = updateProfileDeptCombobox.getSelectedItem().toString();
+
+        Department department = DepartmentService.getDepartmentByName(department_name);
 
         if (last_name.isEmpty() || first_name.isEmpty() || email.isEmpty() || phone_number.isEmpty() || address.isEmpty()
                 || position.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please customer to update.");
         } else {
-            EmployeeService.updateEmployee(authenticatedEmployee.id, last_name, first_name, email, phone_number, address, this.authenticatedEmployee.username, this.authenticatedEmployee.password, this.authenticatedEmployee.is_admin, this.authenticatedEmployee.department_id, position);
+            EmployeeService.updateEmployee(authenticatedEmployee.id, last_name, first_name, email, phone_number, address, this.authenticatedEmployee.username, this.authenticatedEmployee.password, this.authenticatedEmployee.is_admin, department.department_id, position);
             updateProfileEditBtn.setText("Edit Profile");
             updateProfileSubmitBtn.setVisible(false);
             updateProfileSubmitBtn.setBackground(new Color(255, 255, 255));
 
             JOptionPane.showMessageDialog(rootPane, "Updated Successfully.");
             refreshAuthEmployee();
+            this.setUpdateProfileFieldsEditableState(false);
 
         }
     }//GEN-LAST:event_updateProfileSubmitBtnMouseClicked
+
+    public void setUpdateProfileFieldsEditableState(Boolean editable) {
+        LastNameText.setEnabled(editable);
+        FirstNameText.setEnabled(editable);
+        EmailText.setEnabled(editable);
+        PhoneNumberText.setEnabled(editable);
+        AddressText.setEnabled(editable);
+        PositionText.setEnabled(editable);
+        updateProfileDeptCombobox.setEnabled(editable);
+
+    }
 
     private void updateProfileEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateProfileEditBtnActionPerformed
         String cancelText = "Cancel Editing";
         System.out.println(updateProfileEditBtn.getText());
         if (updateProfileEditBtn.getText().equals(cancelText)) {
-            updateProfileSubmitBtn.setVisible(true);
-            updateProfileEditBtn.setText(cancelText);
-        } else {
             updateProfileSubmitBtn.setVisible(false);
             updateProfileEditBtn.setText("Edit");
+            this.setUpdateProfileFieldsEditableState(false);
+
+        } else {
+            updateProfileSubmitBtn.setVisible(true);
+            updateProfileEditBtn.setText(cancelText);
+            this.setUpdateProfileFieldsEditableState(true);
         }
         ProfileTab.revalidate();
         ProfileTab.repaint();
