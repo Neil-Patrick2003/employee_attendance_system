@@ -174,21 +174,17 @@ public class LoginFrame extends javax.swing.JFrame {
 
         Employee employee = EmployeeService.getByUsernameAndPassword(username, password);
 
-        if (employee != null) {
-            // If the employee object is not null (i.e., the login was successful)
-            System.out.println("Login successful");
-
-            // Create and display the EmployeeDashboard frame
+        if (employee == null) {
+            JOptionPane.showMessageDialog(null, "Wrong username or password.", "Message", JOptionPane.ERROR_MESSAGE);
+        } else {
             EmployeeDashboard employeeDash = new EmployeeDashboard();
             employeeDash.setAuthenticatedEmployee(employee);
             employeeDash.setVisible(true);
             employeeDash.setLocationRelativeTo(null);
             this.dispose();
-        } else {
-            // If the employee object is null (i.e., the login failed)
-            System.out.println("Login failed. Invalid username or password.");
-            // You can add code here to display an error message or perform other actions
         }
+
+        
 
 //        JFrame m    ainFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
 //        this.setVisible(false);
@@ -210,7 +206,7 @@ public class LoginFrame extends javax.swing.JFrame {
         signupFrame.pack(); // Resize the frame to fit the component
         signupFrame.setVisible(true);
         signupFrame.setLocationRelativeTo(null);
-        
+
     }//GEN-LAST:event_signup_buttonMouseClicked
 
     private void username_textfeildMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_username_textfeildMouseClicked
