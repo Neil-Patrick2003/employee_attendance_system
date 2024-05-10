@@ -3,6 +3,7 @@
  */
 package com.mycompany.employee_attendance_system;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,12 +18,40 @@ public class Employee_attendance_system {
          
          for (int i = 0; i < employees.size(); i++) {
              Employee employee =  employees.get(i);
+//             EmployeeService.updateEmployee(employee.id, "mulingbayan", "bryan", "test", "-0-", "e", "dsadasdsa", "dasdasdsa", false, 1, "tes");
              
              System.out.println(employee.first_name);
              System.out.println(employee.department.department_name);
             
         }
-        // LeaveRequestService.addLeaveReq(startDate, endDate, "Pending", "emergency", 1, d);
+         
+//        LeaveTypeService.addLeaveType("Paid PTO Leave", 10);
+//        LeaveTypeService.addLeaveType("Sick Leave", 10);
+//        LeaveTypeService.addLeaveType("Unpaid Leave", 10);
+                 
+         List<LeaveType> leaveTypes = LeaveTypeService.getAllLeaveTypes();
+         
+         for (int i = 0; i < leaveTypes.size(); i++) {
+             LeaveType leaveType =  leaveTypes.get(i);
+             
+             System.out.println(leaveType.name + " " + leaveType.limit);
+        }
+         
+         Date start_date = new Date();
+         Date end_date = new Date();
+         
+//         LeaveRequestService.addLeaveReq(start_date, end_date, "For Approval", "test", 1, 1);
+
+         List<LeaveRequest> leaveRequests = LeaveRequestService.getAllLeaveRequests();
+         
+         for (int i = 0; i < leaveRequests.size(); i++) {
+             LeaveRequest leaveRequest =  leaveRequests.get(i);
+             
+             System.out.println(leaveRequest.employee.first_name);
+             System.out.println(leaveRequest.leaveType.name);
+             System.out.println(leaveRequest.startDate + " " + leaveRequest.endDate);
+        }
+         
 //        Timestamp timeIn = new Timestamp(System.currentTimeMillis());
 //        System.out.println("Current Timestamp: " + timeIn);
 //        

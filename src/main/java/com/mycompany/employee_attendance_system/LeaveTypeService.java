@@ -4,10 +4,6 @@
  */
 package com.mycompany.employee_attendance_system;
 
-import static com.mycompany.employee_attendance_system.DepartmentService.DEPARTMENTS_TABLE;
-import static com.mycompany.employee_attendance_system.DepartmentService.DEPARTMENT_ID_COLUMN;
-import static com.mycompany.employee_attendance_system.DepartmentService.DEPARTMENT_NAME_COLUMN;
-import com.mysql.cj.Query;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -99,7 +95,8 @@ public class LeaveTypeService {
                 // Retrieve data from the result set
                 int leave_type_id = resultSet.getInt(LEAVE_TYPE_ID_COLUMN);
                 String name = resultSet.getString(NAME_COLUMN);
-                LeaveType leaveType = new LeaveType(leave_type_id, name, leave_type_id);
+                int limit = resultSet.getInt(LEAVE_LIMIT_COLUMN);
+                LeaveType leaveType = new LeaveType(leave_type_id, name, limit);
                 leaveTypes.add(leaveType);
             }
 
