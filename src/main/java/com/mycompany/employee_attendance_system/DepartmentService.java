@@ -16,10 +16,11 @@ import java.util.List;
  * @author Neil Patrick
  */
 public class DepartmentService {
+
     public static final String DEPARTMENTS_TABLE = "departments";
     public static final String DEPARTMENT_ID_COLUMN = "department_id";
     public static final String DEPARTMENT_NAME_COLUMN = "department_name";
-    
+
     public static void addDepartment(String department_name) {
         Connection conn = AccessDatabaseConnector.connect();
         try {
@@ -47,7 +48,7 @@ public class DepartmentService {
     
     public static Department getDepartmentByName(String department_name) {
         String selectQuery = "SELECT * FROM " + DEPARTMENTS_TABLE + " WHERE " + DEPARTMENT_NAME_COLUMN + " = '" + department_name + "' LIMIT 1;";
-        System.out.println(selectQuery);
+        
         Connection conn = AccessDatabaseConnector.connect();
         try {
             Statement statement = conn.createStatement();
@@ -75,7 +76,7 @@ public class DepartmentService {
 
         return null;
     }
-    
+
     public static List getAllDepartments() {
         List<Department> departments = new ArrayList<>();
 
@@ -110,4 +111,18 @@ public class DepartmentService {
         return null;
     }
     
+    public static void updateDepartment(int department_id, String deparment_name) {
+        Connection conn = AccessDatabaseConnector.connect();
+        try (Statement statement = conn.createStatement()) {
+            String updateQuery = "Update " + DEPARTMENTS_TABLE + " SET " + DEPARTMENT_NAME_COLUMN + " = '" + deparment_name +  "' WHERE " + DEPARTMENT_ID_COLUMN + " = " + department_id + ";";
+            System.out.println(updateQuery);
+            statement.executeUpdate(updateQuery);
+
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle SQL exceptions
+        } finally {
+            AccessDatabaseConnector.closeConnection(conn);
+        }
+    }
+
 }

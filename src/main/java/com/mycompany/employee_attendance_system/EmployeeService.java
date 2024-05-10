@@ -68,7 +68,6 @@ public class EmployeeService {
 
             return employee;
         } catch (SQLException e) {
-            System.out.println("ERROR HERE");
             System.out.print(e);
         } finally {
             AccessDatabaseConnector.closeConnection(conn);
@@ -77,7 +76,7 @@ public class EmployeeService {
         return null;
     }
 
-    public static void addEmployee(String last_name, String first_name, String email, String phone_number, String address, String username, String password, boolean is_admin, int departmenta_id, String position) {
+    public static void addEmployee(String last_name, String first_name, String email, String phone_number, String address, String username, String password, boolean is_admin, int department_id, String position) {
         Connection conn = AccessDatabaseConnector.connect();
         try {
 
@@ -85,7 +84,7 @@ public class EmployeeService {
             try (Statement statement = conn.createStatement()) {
                 // Execute an INSERT query
 
-                String insertQuery = "INSERT INTO " + EMPLOYEES_TABLE + " (" + LAST_NAME_COLUMN + ", " + FIRST_NAME_COLUMN + ", " + EMAIL_COLUMN + ", " + PHONE_NUMBER_COLUMN + ", " + ADDRESS_COLUMN + ", " + USERNAME_COLUMN + ", " + PASSWORD_COLUMN + ", " + IS_ADMIN_COLUMN + ", " + DEPARTMENT_ID_COLUMN + ", " + password + " ) VALUES ('" + last_name + "', '" + first_name + "', '" + email + "', '" + phone_number + "', '" + address + "', '" + username + "', '" + password + "', " + is_admin + ", '" + departmenta_id + "', '" + position + "');";
+                String insertQuery = "INSERT INTO " + EMPLOYEES_TABLE + " (" + LAST_NAME_COLUMN + ", " + FIRST_NAME_COLUMN + ", " + EMAIL_COLUMN + ", " + PHONE_NUMBER_COLUMN + ", " + ADDRESS_COLUMN + ", " + USERNAME_COLUMN + ", " + PASSWORD_COLUMN + ", " + IS_ADMIN_COLUMN + ", " + DEPARTMENT_ID_COLUMN + ", " + POSITION_COLUMN + " ) VALUES ('" + last_name + "', '" + first_name + "', '" + email + "', '" + phone_number + "', '" + address + "', '" + username + "', '" + password + "', " + is_admin + ", '" + department_id + "', '" + position + "');";
                 System.out.println(insertQuery);
                 int rowsAffected = statement.executeUpdate(insertQuery);
                 // Check the number of rows affected
@@ -103,7 +102,7 @@ public class EmployeeService {
         }
     }
 
-    public static List getAllEmployee() {
+    public static List getAllEmployees() {
         List<Employee> EmployeeList = new ArrayList<>();
 
         Connection conn = AccessDatabaseConnector.connect();
@@ -111,7 +110,7 @@ public class EmployeeService {
             Statement statement = conn.createStatement();
 
             // Execute a SELECT query
-            String selectQuery = "SELECT * FROM " + EMPLOYEES_TABLE;
+            String selectQuery = "SELECT employees.*, departments.department_name FROM employees JOIN departments ON employees.department_id = departments.department_id;";
             ResultSet resultSet = statement.executeQuery(selectQuery);
 
             // Process the results
@@ -130,9 +129,13 @@ public class EmployeeService {
                 String hiring_date = resultSet.getString(HIRING_DATE_COLUMN);
                 int department_id = resultSet.getInt(DEPARTMENT_ID_COLUMN);
                 String position = resultSet.getString(POSITION_COLUMN);
+                String department_name = resultSet.getString(DepartmentService.DEPARTMENT_NAME_COLUMN);
 
                 Employee employee = new Employee(employee_id, last_name, first_name, email, phone_number, address, username, password, is_admin, hiring_date, department_id, position);
-
+                Department department = new Department(department_id, department_name);
+                
+                employee.setDepartment(department);
+                
                 EmployeeList.add(employee);
 
             }
