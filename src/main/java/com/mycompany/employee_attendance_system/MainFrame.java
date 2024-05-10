@@ -168,6 +168,7 @@ public class MainFrame extends javax.swing.JFrame {
 
             // Create and display the EmployeeDashboard frame
             EmployeeDashboard employeeDash = new EmployeeDashboard();
+            employeeDash.setAuthenticatedEmployee(employee);
             employeeDash.setVisible(true);
             employeeDash.setLocationRelativeTo(null);
             this.dispose();

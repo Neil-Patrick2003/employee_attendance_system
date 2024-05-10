@@ -3,6 +3,9 @@
  */
 package com.mycompany.employee_attendance_system;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -12,33 +15,35 @@ import java.util.List;
 public class Employee_attendance_system {
 
     public static void main(String[] args) {
-
-        // Add department
-        // DepartmentService.addDepartment("IT");
-        // DepartmentService.addDepartment("HR");
-        // DepartmentService.addDepartment("Admin");
-        System.out.println("List departments");
-        List<Department> departments = DepartmentService.getAllDepartments();
-        for (int i = 0; i < departments.size(); i++) {
-            Department department = departments.get(i);
-
-            DepartmentService.updateDepartment(department.department_id, department.department_name + " updated");
-        }
-
-        departments = DepartmentService.getAllDepartments();
-        for (int i = 0; i < departments.size(); i++) {
-            Department department = departments.get(i);
-
-            System.out.println(department.department_id + "." + department.department_name);
-        }
-
+        
+        
+        
+       // LeaveRequestService.addLeaveReq(startDate, endDate, "Pending", "emergency", 1, d);
+        
+        
+        
+        
+//        Timestamp timeIn = new Timestamp(System.currentTimeMillis());
+//        System.out.println("Current Timestamp: " + timeIn);
+//        
+//        Timestamp timeOut = new Timestamp(System.currentTimeMillis());
+//        System.out.println("Current Timestamp: " + timeOut);
+//        
+//        LocalDate currentDate = LocalDate.now();
+//        System.out.println("Current Date: " + currentDate);
+//        
+//        AttendanceRecordService.addAttendanceRecord(currentDate, timeIn, timeOut, 0, "Present");
+        
 //        JFrame frame = new JFrame("Film Equipment Rental Service");
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // EmployeeService.addEmployee("mulingbayan", "neil", "neil@gmail.com", "09215046150", "magahis", "neil123456", "neil123456", true, 1, 1000.00, "hr");
-//        MainFrame LoginFrame = new MainFrame();
-//        LoginFrame.setVisible(true);
-//        LoginFrame.pack();
-//        LoginFrame.setVisible(true);
-//        LoginFrame.setLocationRelativeTo(null);
+       // EmployeeService.addEmployee("mulingbayan", "neil", "neil@gmail.com", "09215046150", "magahis", "neil123456", "neil123456", true, 1, 1000.00, "hr");
+        MainFrame LoginFrame = new MainFrame();
+        LoginFrame.setVisible(true);
+        LoginFrame.pack();
+        LoginFrame.setVisible(true);
+        LoginFrame.setLocationRelativeTo(null);
+        
+        
+
     }
 }
