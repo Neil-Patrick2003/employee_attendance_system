@@ -80,6 +80,58 @@ public class EmployeeService {
 
         return null;
     }
+    
+    public static Employee getEmployeeByField(String field, String value) {
+        String selectQuery = "SELECT employees.*, departments.department_name FROM employees JOIN departments ON employees.department_id = departments.department_id "
+                + " WHERE " + field + " = '" + value + "' LIMIT 1;";
+
+        System.out.println(selectQuery);
+        Connection conn = AccessDatabaseConnector.connect();
+        try {
+            Statement statement = conn.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(selectQuery);
+
+            Employee employee = null;
+
+            // Process the results
+            while (resultSet.next()) {
+                // Retrieve data from the result set
+                int id = resultSet.getInt(EMPLOYEE_ID_COLUMN);
+
+                String last_name = resultSet.getString(LAST_NAME_COLUMN);
+                String first_name = resultSet.getString(FIRST_NAME_COLUMN);
+                String email = resultSet.getString(EMAIL_COLUMN);
+                String username = resultSet.getString(USERNAME_COLUMN);
+                String password = resultSet.getString(PASSWORD_COLUMN);
+                String phone_number = resultSet.getString(PHONE_NUMBER_COLUMN);
+                String address = resultSet.getString(ADDRESS_COLUMN);
+                boolean is_admin = resultSet.getBoolean(IS_ADMIN_COLUMN);
+                String hiring_date = resultSet.getString(HIRING_DATE_COLUMN);
+                int department_id = resultSet.getInt(DEPARTMENT_ID_COLUMN);
+                String position = resultSet.getString(POSITION_COLUMN);
+
+                employee = new Employee(id, last_name, first_name, email, phone_number, address, username, password, is_admin, hiring_date, department_id, position);
+                String department_name = resultSet.getString(DepartmentService.DEPARTMENT_NAME_COLUMN);
+                Department department = new Department(department_id, department_name);
+
+                employee.setDepartment(department);
+            }
+
+            // Close the result set and statement
+            resultSet.close();
+            statement.close();
+
+            return employee;
+        } catch (SQLException e) {
+            System.out.print(e);
+        } finally {
+            AccessDatabaseConnector.closeConnection(conn);
+        }
+
+        return null;
+    }
+    
 
     public static void addEmployee(String last_name, String first_name, String email, String phone_number, String address, String username, String password, boolean is_admin, int department_id, String position) {
         Connection conn = AccessDatabaseConnector.connect();
