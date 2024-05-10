@@ -151,4 +151,37 @@ public class LeaveTypeService {
         
         return leaveTypes;
     }
+    
+    public static LeaveType getLeaveTypeByNameWithEmployeeBalance(int employee_id, String name) {
+       String selectQuery = "SELECT leave_types.*, calculate_leave_balance_for_employee(" + employee_id + ", leave_type_id) AS leave_balance FROM leave_types WHERE " + NAME_COLUMN + " = '" + name + "' LIMIT 1;";
+        Connection conn = AccessDatabaseConnector.connect();
+        
+        System.out.println(selectQuery);
+        try {
+            Statement statement = conn.createStatement();
+            
+            ResultSet resultSet = statement.executeQuery(selectQuery);
+            
+            LeaveType leaveType = null;
+
+            // Process the results
+            while (resultSet.next()) {
+                int leave_type_id = resultSet.getInt(LEAVE_TYPE_ID_COLUMN);
+                leaveType = new LeaveType(leave_type_id, name, leave_type_id);
+                leaveType.setEmployeeBalance(resultSet.getInt("leave_balance"));
+            }
+
+            // Close the result set and statement
+            resultSet.close();
+            statement.close();
+            
+            return leaveType;
+        } catch (SQLException e) {
+            System.out.print(e);
+        } finally {
+            AccessDatabaseConnector.closeConnection(conn);
+        }
+        
+        return null;
+    }
 }

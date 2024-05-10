@@ -4,6 +4,7 @@
  */
 package com.mycompany.employee_attendance_system;
 
+import java.awt.Color;
 import java.util.Date;
 import java.util.List;
 
@@ -14,21 +15,23 @@ import java.util.List;
 public class AddLeaveReqForm extends javax.swing.JFrame {
 
     Employee authenticatedEmployee;
+    int availableBalance = 0;
 
     /**
      * Creates new form AddLeaveReqForm
      */
     public AddLeaveReqForm() {
         initComponents();
-
-        List<LeaveType> leaveTypes = LeaveTypeService.getAllLeaveTypes();
-        for (int i = 0; i < leaveTypes.size(); i++) {
-            LeaveTypeComBox.addItem(leaveTypes.get(i).name);
-        }
+        leaveRequestFormRemarkLabel.setVisible(false);
     }
 
     public void setAuthenticatedEmployee(Employee employee) {
         this.authenticatedEmployee = employee;
+
+        List<LeaveType> leaveTypes = LeaveTypeService.getLeaveTypesWithEmployeeBalance(employee.id);
+        for (int i = 0; i < leaveTypes.size(); i++) {
+            LeaveTypeComBox.addItem(leaveTypes.get(i).name);
+        }
     }
 
     /**
@@ -52,6 +55,7 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         SubmitButton = new javax.swing.JButton();
         CancelButton = new javax.swing.JButton();
+        leaveRequestFormRemarkLabel = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,6 +75,11 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
         jLabel2.setText("Leave Type");
 
         LeaveTypeComBox.setBackground(new java.awt.Color(255, 255, 255));
+        LeaveTypeComBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                LeaveTypeComBoxItemStateChanged(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
@@ -116,6 +125,8 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
             }
         });
 
+        leaveRequestFormRemarkLabel.setText("jLabel5");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -126,6 +137,11 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addComponent(LeaveTypeComBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(CancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -137,11 +153,7 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
                                 .addComponent(jLabel3))
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 1, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(CancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(leaveRequestFormRemarkLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -161,7 +173,9 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(leaveRequestFormRemarkLabel)
+                .addGap(15, 15, 15)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -238,7 +252,7 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
 
         String notes = noteTextArea.getText();
 
-        LeaveRequestService.addLeaveReq(sqlStartDate, sqlEndDate, "peding", notes, leaveType.leave_type_id, this.authenticatedEmployee.id);
+        LeaveRequestService.addLeaveReq(sqlStartDate, sqlEndDate, "For Approval", notes, leaveType.leave_type_id, this.authenticatedEmployee.id);
 
 //        if (FirstNameText.getText().equals("") || FirstNameText.getText().equals("") || EmailText.getText().equals("") || PhoneText.getText().equals("") || AddressText.getText().equals("") || UsernameText.getText().equals("") || PositionText.getText().equals("") || department == null) {
 //            JOptionPane.showMessageDialog(null, "Please Complete the form.");
@@ -248,6 +262,27 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
 //        }
 
     }//GEN-LAST:event_SubmitButtonMouseClicked
+
+    private void LeaveTypeComBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LeaveTypeComBoxItemStateChanged
+        String leaveTypeName = LeaveTypeComBox.getSelectedItem().toString();
+
+        LeaveType leaveType = LeaveTypeService.getLeaveTypeByNameWithEmployeeBalance(this.authenticatedEmployee.id, leaveTypeName);
+
+        if (leaveType != null) {
+            availableBalance = leaveType.employeeBalance;
+            leaveRequestFormRemarkLabel.setText("You have " + leaveType.employeeBalance + " remaining balance on this leave request type.");
+            if (availableBalance > 0) {
+
+                leaveRequestFormRemarkLabel.setForeground(Color.BLACK);
+            } else {
+                leaveRequestFormRemarkLabel.setForeground(Color.RED);
+            }
+
+            leaveRequestFormRemarkLabel.setVisible(true);
+        }
+
+
+    }//GEN-LAST:event_LeaveTypeComBoxItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -299,6 +334,7 @@ public class AddLeaveReqForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel leaveRequestFormRemarkLabel;
     private javax.swing.JTextArea noteTextArea;
     // End of variables declaration//GEN-END:variables
 }
