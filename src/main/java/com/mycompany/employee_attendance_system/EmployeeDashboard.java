@@ -1027,11 +1027,14 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                 "Leave Request ID", "Start Date", "End Date", "Status ", "Notes", "Employee Name", "Leave type"
             }
         ));
+        LeaveRequestAdminTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LeaveRequestAdminTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(LeaveRequestAdminTable);
 
         jPanel1.setBackground(new java.awt.Color(135, 206, 235));
-
-        jLabel24.setIcon(new javax.swing.ImageIcon("C:\\Users\\Neil Patrick\\Downloads\\icons8-leave-30.png")); // NOI18N
 
         jLabel26.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
@@ -1184,7 +1187,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
         for (int i = 0; i < leaveRequests.size(); i++) {
             LeaveRequest leaveRequest = leaveRequests.get(i);
-            Object[] rowData = {leaveRequest.request_id, leaveRequest.startDate, leaveRequest.endDate, leaveRequest.status, leaveRequest.notes, leaveRequest.employee.username, leaveRequest.leaveType.name};
+            Object[] rowData = {leaveRequest.request_id, leaveRequest.getFormattedStartDate(), leaveRequest.getFormattedEndDate(), leaveRequest.status, leaveRequest.notes, leaveRequest.employee.getFullName(), leaveRequest.leaveType.name};
             leaveRequesttTableModel.addRow(rowData);
         }
     }
@@ -1333,6 +1336,14 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     private void updateProfileSubmitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateProfileSubmitBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_updateProfileSubmitBtnActionPerformed
+
+    private void LeaveRequestAdminTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LeaveRequestAdminTableMouseClicked
+        int i = LeaveRequestAdminTable.getSelectedRow();
+        int leaveRequestId = (int) LeaveRequestAdminTable.getValueAt(i, 0);
+        
+        LeaveRequest leaveRequest = LeaveRequestService.getLeaveRequestById(leaveRequestId);        
+        System.out.println(leaveRequest.employee.getFullName());
+    }//GEN-LAST:event_LeaveRequestAdminTableMouseClicked
 
     /**
      * @param args the command line arguments
