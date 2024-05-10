@@ -29,7 +29,7 @@ import java.sql.SQLException;
 public class AccessDatabaseConnector {
 
     // JDBC URL, username, and password of the database to connect
-    private static final String DATABASE = "employee_attendance_system";
+    private static final String DATABASE = "attendance_system";
     private static final String PORT = "3306";
     private static final String URL = "jdbc:mysql://localhost:" + PORT + "/" + DATABASE + "?zeroDateTimeBehavior=CONVERT_TO_NULL";
     private static final String USERNAME = "root";
