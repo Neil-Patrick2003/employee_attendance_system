@@ -20,7 +20,7 @@ public class LeaveRequest {
     int employee_id;
     Employee employee;
     
-    public LeaveRequest(int request_id,Date startDate,Date endDate, boolean status, String notes, int leave_type_id, int employee_id){
+    public LeaveRequest(int request_id, Date startDate, Date endDate, String notes, String name, int leave_type_id, int employee_id){
         this.request_id = request_id;
         this.startDate = startDate;
         this.EndDate = endDate;

@@ -27,10 +27,10 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     public EmployeeDashboard() {
         initComponents();
         refreshCustomerList();
-        refreshLeaveRequestList();
+        //refreshLeaveRequestList();
 
     }
-    
+
     public void setAuthenticatedEmployee(Employee employee) {
         this.authenticatedEmployee = employee;
         System.out.print(this.authenticatedEmployee.first_name);
@@ -935,22 +935,25 @@ public class EmployeeDashboard extends javax.swing.JFrame {
             employeesTableModel.addRow(rowData);
         }
     }
-    
+
     // refresh leave request list in admin 
-    private void refreshLeaveRequestList() {
-        DefaultTableModel leaveReqDefaultTableModel = (DefaultTableModel) LeaveRequestTable.getModel();
-        
-        List<LeaveRequest> leaveRequests = LeaveRequestService.getAllLeaveRequests();
-        leaveReqDefaultTableModel.setRowCount(0);
-
-        System.out.println(leaveRequests.size());
-
-        for (int i = 0; i < leaveRequests.size(); i++) {
-            LeaveRequest leaveRequest = leaveRequests.get(i);
-//            Object[] rowData = {leaveRequest.};
-//            employeesTableModel.addRow(rowData);
-        }
-    }
+//    private void refreshLeaveRequestList() {
+//        DefaultTableModel leaveReqDefaultTableModel = (DefaultTableModel) LeaveRequestTable.getModel();
+//
+//        List<LeaveRequest> leaveRequests = LeaveRequestService.getAllLeaveRequests();
+//        leaveReqDefaultTableModel.setRowCount(0);
+//
+//        System.out.println(leaveRequests.size());
+//
+//        for (int i = 0; i < leaveRequests.size(); i++) {
+//            LeaveRequest leaveRequest = leaveRequests.get(i);
+////            Object[] rowData = {leaveRequest.};
+////            employeesTableModel.addRow(rowData);
+//            Object[] rowData = {leaveRequest.request_id, leaveRequest.startDate, leaveRequest.EndDate, leaveRequest.status, leaveRequest.notes, leaveRequest.leave_type_id, leaveRequest.employee_id};
+//            leaveReqDefaultTableModel.addRow(rowData);
+//
+//        }
+//    }
 
     void setColor(JPanel panel) {
         panel.setBackground(new Color(100, 206, 250));
