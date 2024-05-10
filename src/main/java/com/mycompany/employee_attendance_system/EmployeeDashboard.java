@@ -10,6 +10,7 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import javax.security.auth.callback.ConfirmationCallback;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -21,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
 public class EmployeeDashboard extends javax.swing.JFrame {
 
     Employee authenticatedEmployee;
+    Employee selectedEmployee;
 
     /**
      * Creates new form EmployeeDashboard
@@ -138,7 +140,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         AdminDashboradTab = new javax.swing.JTabbedPane();
         EmployeeTab = new javax.swing.JPanel();
         jScrollPane = new javax.swing.JScrollPane();
-        EmployeeTable = new javax.swing.JTable();
+        AdminEmployeesTable = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
@@ -154,6 +156,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
+        adminManageEmployee = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(220, 220, 220));
@@ -311,11 +314,11 @@ public class EmployeeDashboard extends javax.swing.JFrame {
             .addComponent(DashboardButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(MyProfileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(LeaveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(AdminButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(LeftPanelLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(AdminButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         LeftPanelLayout.setVerticalGroup(
             LeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,7 +333,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                 .addComponent(MyProfileButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(AdminButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 203, Short.MAX_VALUE))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         getContentPane().add(LeftPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 179, 580));
@@ -936,10 +939,10 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
         jScrollPane.setBackground(new java.awt.Color(255, 255, 255));
 
-        EmployeeTable.setBackground(new java.awt.Color(255, 255, 255));
-        EmployeeTable.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        EmployeeTable.setForeground(new java.awt.Color(51, 51, 51));
-        EmployeeTable.setModel(new javax.swing.table.DefaultTableModel(
+        AdminEmployeesTable.setBackground(new java.awt.Color(255, 255, 255));
+        AdminEmployeesTable.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        AdminEmployeesTable.setForeground(new java.awt.Color(51, 51, 51));
+        AdminEmployeesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null},
@@ -958,7 +961,12 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane.setViewportView(EmployeeTable);
+        AdminEmployeesTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AdminEmployeesTableMouseClicked(evt);
+            }
+        });
+        jScrollPane.setViewportView(AdminEmployeesTable);
 
         jPanel3.setBackground(new java.awt.Color(135, 206, 235));
 
@@ -1155,13 +1163,28 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
         RIghtPanelTabbed.addTab("tab8", AdminDashboradTab);
 
+        adminManageEmployee.setBackground(new java.awt.Color(204, 204, 204));
+
+        javax.swing.GroupLayout adminManageEmployeeLayout = new javax.swing.GroupLayout(adminManageEmployee);
+        adminManageEmployee.setLayout(adminManageEmployeeLayout);
+        adminManageEmployeeLayout.setHorizontalGroup(
+            adminManageEmployeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 725, Short.MAX_VALUE)
+        );
+        adminManageEmployeeLayout.setVerticalGroup(
+            adminManageEmployeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 573, Short.MAX_VALUE)
+        );
+
+        RIghtPanelTabbed.addTab("tab5", adminManageEmployee);
+
         getContentPane().add(RIghtPanelTabbed, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, -24, 730, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void refreshCustomerList() {
-        DefaultTableModel employeesTableModel = (DefaultTableModel) EmployeeTable.getModel();
+        DefaultTableModel employeesTableModel = (DefaultTableModel) AdminEmployeesTable.getModel();
         List<Employee> employees = EmployeeService.getAllEmployees();
         employeesTableModel.setRowCount(0);
 
@@ -1334,6 +1357,36 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_updateProfileSubmitBtnActionPerformed
 
+    private void AdminEmployeesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdminEmployeesTableMouseClicked
+        // TODO add your handling code here:
+        int i = AdminEmployeesTable.getSelectedRow();
+        String email = AdminEmployeesTable.getValueAt(i, 3).toString();
+     
+        this.selectedEmployee = EmployeeService.getEmployeeByField("email", email);
+        
+        StringBuilder message = new StringBuilder();
+        message.append("Email: ").append(email).append("\n\n");
+        
+        
+        Object[] options = {"Update Employee.", "Close"};
+        int choice = JOptionPane.showOptionDialog(null, message.toString(), "Transaction Details", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+            if (choice == 0) {
+                RIghtPanelTabbed.setSelectedIndex(4);
+
+            }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_AdminEmployeesTableMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1375,6 +1428,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField AddressText;
     private javax.swing.JPanel AdminButton;
     private javax.swing.JTabbedPane AdminDashboradTab;
+    private javax.swing.JTable AdminEmployeesTable;
     private javax.swing.JButton Check_In_Button;
     private javax.swing.JButton Check_In_Button1;
     private javax.swing.JPanel DashboardButton;
@@ -1383,7 +1437,6 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel EmailLabel;
     private javax.swing.JTextField EmailText;
     private javax.swing.JPanel EmployeeTab;
-    private javax.swing.JTable EmployeeTable;
     private javax.swing.JPanel FirstNameLabel;
     private javax.swing.JTextField FirstNameText;
     private javax.swing.JLabel LastNameLabel;
@@ -1403,6 +1456,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel ProfileTab;
     private javax.swing.JTabbedPane RIghtPanelTabbed;
     private javax.swing.JLabel TItleLabel;
+    private javax.swing.JPanel adminManageEmployee;
     private javax.swing.JTable employeeRequestLeaveTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
