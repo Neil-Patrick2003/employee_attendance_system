@@ -13,12 +13,12 @@ import javax.swing.SwingUtilities;
  *
  * @author Neil Patrick
  */
-public class MainFrame extends javax.swing.JFrame {
+public class LoginFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form MainFrame
      */
-    public MainFrame() {
+    public LoginFrame() {
         initComponents();
     }
 
@@ -61,14 +61,26 @@ public class MainFrame extends javax.swing.JFrame {
         username_textfeild.setBackground(new java.awt.Color(220, 220, 220));
         username_textfeild.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         username_textfeild.setForeground(new java.awt.Color(169, 169, 169));
-        username_textfeild.setText("  Type Your Username");
+        username_textfeild.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        username_textfeild.setText("Type Your Username");
+        username_textfeild.setAlignmentX(10.0F);
         username_textfeild.setBorder(null);
+        username_textfeild.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                username_textfeildMouseClicked(evt);
+            }
+        });
 
         password_textfeild.setBackground(new java.awt.Color(220, 220, 220));
         password_textfeild.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         password_textfeild.setForeground(new java.awt.Color(169, 169, 169));
         password_textfeild.setText("  Type Your Password");
         password_textfeild.setBorder(null);
+        password_textfeild.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                password_textfeildMouseClicked(evt);
+            }
+        });
 
         SignIN_button.setBackground(new java.awt.Color(30, 144, 255));
         SignIN_button.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -131,7 +143,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(300, 80, 310, 420);
+        jPanel2.setBounds(290, 80, 310, 420);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,7 +203,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void signup_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signup_buttonMouseClicked
         // TODO add your handling code here:
-        // Create a new JFrame to contain the EmployeeSignUp panel
+        // Create usa new JFrame to contain the EmployeeSignUp panel
         JFrame signupFrame = new JFrame("Film Equipment Rental Service");
         signupFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         signupFrame.add(new EmployeeSignUp());
@@ -200,6 +212,16 @@ public class MainFrame extends javax.swing.JFrame {
         signupFrame.setLocationRelativeTo(null);
         
     }//GEN-LAST:event_signup_buttonMouseClicked
+
+    private void username_textfeildMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_username_textfeildMouseClicked
+        // TODO add your handling code here:
+        username_textfeild.setText("");
+    }//GEN-LAST:event_username_textfeildMouseClicked
+
+    private void password_textfeildMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_password_textfeildMouseClicked
+        // TODO add your handling code here:
+        password_textfeild.setText("");
+    }//GEN-LAST:event_password_textfeildMouseClicked
 
     /**
      * @param args the command line arguments

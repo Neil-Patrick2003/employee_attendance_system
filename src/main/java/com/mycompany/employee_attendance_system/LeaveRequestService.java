@@ -130,5 +130,84 @@ public class LeaveRequestService {
 
         return leaveRequests;
     }
+    
+    public static List getAllLeaveRequestsByEmployeeId(int employeeId) {
+        List<LeaveRequest> leaveRequests = new ArrayList<>();
+
+        Connection conn = AccessDatabaseConnector.connect();
+        try {
+            Statement statement = conn.createStatement();
+
+            // Execute a SELECT query
+            String selectQuery = "SELECT leave_requests.*, employees.*, leave_types.* "
+                    + "FROM leave_requests "
+                    + "JOIN employees ON leave_requests.employee_id = employees.employee_id "
+                    + "JOIN leave_types ON leave_requests.leave_type_id = leave_types.leave_type_id "
+                    + "WHERE leave_requests.employee_id = " + employeeId + ";";
+
+            System.out.println(selectQuery);
+
+            ResultSet resultSet = statement.executeQuery(selectQuery);
+
+            // Process the results
+            while (resultSet.next()) {
+
+                Date startDate;
+                Date endDate;
+
+                try {
+                    startDate = dateFormatter.parse(resultSet.getString(START_DATE_COLUMN));
+                    endDate = dateFormatter.parse(resultSet.getString(END_DATE_COLUMN));
+                } catch (Exception e) {
+                    throw new Error("failed");
+                }
+//    
+                // Retrieve data from the result set
+                int request_id = resultSet.getInt(REQUEST_ID_COLUMN);
+                String status = resultSet.getString(STATUS_COLUMN);
+                String notes = resultSet.getString(NOTES_COLUMN);
+                int leave_type_id = resultSet.getInt(EMPLOYEE_ID_COLUMN);
+                int employee_id = resultSet.getInt(EMPLOYEE_ID_COLUMN);
+
+                LeaveRequest leaveRequest = new LeaveRequest(request_id, startDate, endDate, notes, status, leave_type_id, employee_id);
+                leaveRequests.add(leaveRequest);
+
+                String last_name = resultSet.getString("last_name");
+                String first_name = resultSet.getString("first_name");
+                String email = resultSet.getString("email");
+                String phone_number = resultSet.getString("phone_number");
+                String address = resultSet.getString("address");
+                String username = resultSet.getString("username");
+                String password = resultSet.getString("password");
+                Boolean is_admin = resultSet.getBoolean("is_admin");
+                String hiring_date = resultSet.getString("hiring_date");
+                int department_id = resultSet.getInt("department_id");
+                String position = resultSet.getString("position");
+
+                Employee employee = new Employee(employee_id, last_name, first_name, email, phone_number, address, username, password, is_admin, hiring_date, department_id, position);
+                leaveRequest.setEmployee(employee);
+
+                String leave_type_name = resultSet.getString("name");
+                int leave_type_limit = resultSet.getInt("leave_limit");
+
+                LeaveType leaveType = new LeaveType(leave_type_id, leave_type_name, leave_type_limit);
+                leaveRequest.setLeaveType(leaveType);
+            }
+
+            // Close the result set and statement
+            resultSet.close();
+            statement.close();
+
+            return leaveRequests;
+        } catch (SQLException e) {
+            System.out.print(e);
+        } finally {
+            AccessDatabaseConnector.closeConnection(conn);
+        }
+
+        return leaveRequests;
+    }
+    
+    
 
 }

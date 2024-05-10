@@ -4,6 +4,7 @@
  */
 package com.mycompany.employee_attendance_system;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -21,6 +22,9 @@ public class LeaveRequest {
     int employee_id;
     Employee employee;
     LeaveType leaveType;
+    
+    public static final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+
 
     public LeaveRequest(int request_id, Date startDate, Date endDate, String notes, String status, int leave_type_id, int employee_id) {
         this.request_id = request_id;
@@ -40,4 +44,13 @@ public class LeaveRequest {
         this.leaveType = leaveType;
     }
 
+    
+    public String getFormattedStartDate() {
+        return dateFormatter.format(this.startDate);
+    }
+    
+    public String getFormattedEndDate() {
+        return dateFormatter.format(this.endDate);
+    }
+    
 }

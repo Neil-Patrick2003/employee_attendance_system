@@ -33,7 +33,8 @@ public class EmployeeService {
     private static final String POSITION_COLUMN = "position";
 
     public static Employee getByUsernameAndPassword(String username, String password) {
-        String selectQuery = "SELECT * FROM " + EMPLOYEES_TABLE + " WHERE " + USERNAME_COLUMN + " = '" + username + "' AND " + PASSWORD_COLUMN + " = '" + password + "' LIMIT 1;";
+        String selectQuery = "SELECT employees.*, departments.department_name FROM employees JOIN departments ON employees.department_id = departments.department_id "
+                + " WHERE " + USERNAME_COLUMN + " = '" + username + "' AND " + PASSWORD_COLUMN + " = '" + password + "' LIMIT 1;";
 
         System.out.println(selectQuery);
         Connection conn = AccessDatabaseConnector.connect();
@@ -60,6 +61,10 @@ public class EmployeeService {
                 String position = resultSet.getString(POSITION_COLUMN);
 
                 employee = new Employee(id, last_name, first_name, email, phone_number, address, username, password, is_admin, hiring_date, department_id, position);
+                String department_name = resultSet.getString(DepartmentService.DEPARTMENT_NAME_COLUMN);
+                Department department = new Department(department_id, department_name);
+
+                employee.setDepartment(department);
             }
 
             // Close the result set and statement
@@ -157,7 +162,7 @@ public class EmployeeService {
     public static void updateEmployee(int employee_id, String last_name, String first_name, String email, String phone_number, String address, String username, String password, boolean is_admin, int department_id, String position) {
         Connection conn = AccessDatabaseConnector.connect();
         try (Statement statement = conn.createStatement()) {
-            String updateQuery = "Update " + EMPLOYEES_TABLE + " SET " + LAST_NAME_COLUMN + " = '" + last_name + "', " + FIRST_NAME_COLUMN + " = '" + first_name + "', " + EMAIL_COLUMN + " = '" + email + "', " + PHONE_NUMBER_COLUMN + " = '" + phone_number + "', " + ADDRESS_COLUMN + " = '" + address + "', " + USERNAME_COLUMN + " = '" + username + "', " + PASSWORD_COLUMN + " = '" + password + "', " + IS_ADMIN_COLUMN + " = " + is_admin + ", " + DEPARTMENT_ID_COLUMN + " = '" + department_id + "', " + POSITION_COLUMN + " = '" + position+ "' WHERE " + EMPLOYEE_ID_COLUMN + " = " + employee_id + ";";
+            String updateQuery = "Update " + EMPLOYEES_TABLE + " SET " + LAST_NAME_COLUMN + " = '" + last_name + "', " + FIRST_NAME_COLUMN + " = '" + first_name + "', " + EMAIL_COLUMN + " = '" + email + "', " + PHONE_NUMBER_COLUMN + " = '" + phone_number + "', " + ADDRESS_COLUMN + " = '" + address + "', " + USERNAME_COLUMN + " = '" + username + "', " + PASSWORD_COLUMN + " = '" + password + "', " + IS_ADMIN_COLUMN + " = " + is_admin + ", " + DEPARTMENT_ID_COLUMN + " = '" + department_id + "', " + POSITION_COLUMN + " = '" + position + "' WHERE " + EMPLOYEE_ID_COLUMN + " = " + employee_id + ";";
             System.out.println(updateQuery);
             statement.executeUpdate(updateQuery);
 
@@ -167,4 +172,5 @@ public class EmployeeService {
             AccessDatabaseConnector.closeConnection(conn);
         }
     }
+
 }

@@ -67,7 +67,7 @@ public class Employee_attendance_system {
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        // EmployeeService.addEmployee("mulingbayan", "neil", "neil@gmail.com", "09215046150", "magahis", "neil123456", "neil123456", true, 1, 1000.00, "hr");
         //EmployeeService.addEmployee("mulingbayan", "bryan", "bryan.mulingbayan@gmail.com", "09051396541", "magahis", "neil", "neil", true, 1, "Boss");
-        MainFrame LoginFrame = new MainFrame();
+        LoginFrame LoginFrame = new LoginFrame();
         LoginFrame.setVisible(true);
         LoginFrame.pack();
         LoginFrame.setVisible(true);

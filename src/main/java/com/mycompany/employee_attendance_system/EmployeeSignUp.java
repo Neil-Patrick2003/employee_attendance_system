@@ -4,7 +4,10 @@
  */
 package com.mycompany.employee_attendance_system;
 
+import java.awt.Container;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,9 +27,6 @@ public class EmployeeSignUp extends javax.swing.JPanel {
         for (int i = 0; i < departments.size(); i++) {
             departmentComboBOx.addItem(departments.get(i).department_name);
         }
-
-        
-        
 
     }
 
@@ -342,7 +342,7 @@ public class EmployeeSignUp extends javax.swing.JPanel {
         Department department = null;
 
         if (departmentComboBOx.getSelectedIndex() >= 0) {
-            department = DepartmentService.getDepartmentByName(departmentComboBOx.getSelectedItem().toString());
+            
         }
 
         char[] passwordChars = PasswordText.getPassword();
@@ -356,6 +356,29 @@ public class EmployeeSignUp extends javax.swing.JPanel {
 
         } else {
             EmployeeService.addEmployee(last_name, first_name, email, phone_number, address, username, password, false, department.department_id, position);
+
+            Employee employee = EmployeeService.getByUsernameAndPassword(username, password);
+
+            if (employee != null) {
+                // If the employee object is not null (i.e., the login was successful)
+                System.out.println("Login successful");
+
+                // Create and display the EmployeeDashboard frame
+                EmployeeDashboard employeeDash = new EmployeeDashboard();
+                employeeDash.setAuthenticatedEmployee(employee);
+                employeeDash.setVisible(true);
+                employeeDash.setLocationRelativeTo(null);
+                Container parent = this.getParent(); // Get the parent container
+                parent.remove(this); // Remove the panel from its parent
+                parent.revalidate(); // Revalidate the parent container
+                parent.repaint(); // Repaint the parent container
+                if (parent instanceof JFrame) {
+                    ((JFrame) parent).dispose();
+                } else if (parent instanceof JDialog) {
+                    ((JDialog) parent).dispose();
+                }
+
+            }
         }
 
 
