@@ -142,7 +142,7 @@ public class LeaveRequestService {
             String selectQuery = "SELECT leave_requests.*, employees.*, leave_types.* "
                     + "FROM leave_requests "
                     + "JOIN employees ON leave_requests.employee_id = employees.employee_id "
-                    + "JOIN leave_types ON leave_requests.leave_type_id = leave_types.leave_type_id;"
+                    + "JOIN leave_types ON leave_requests.leave_type_id = leave_types.leave_type_id "
                     + "WHERE leave_requests.employee_id = " + employeeId + ";";
 
             System.out.println(selectQuery);
