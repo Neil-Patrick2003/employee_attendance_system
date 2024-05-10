@@ -13,12 +13,12 @@ import javax.swing.SwingUtilities;
  *
  * @author Neil Patrick
  */
-public class MainFrame extends javax.swing.JFrame {
+public class LoginFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form MainFrame
      */
-    public MainFrame() {
+    public LoginFrame() {
         initComponents();
     }
 
