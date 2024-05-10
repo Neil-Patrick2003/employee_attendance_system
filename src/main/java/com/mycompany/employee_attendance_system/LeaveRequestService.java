@@ -281,4 +281,18 @@ public class LeaveRequestService {
         return leaveRequests;
     }
 
+    public static void updateLeaveRequest(int request_id, Date startDate, Date endDate, String status, String notes, int leave_type_id, int employee_id) {
+        Connection conn = AccessDatabaseConnector.connect();
+        try (Statement statement = conn.createStatement()) {
+            String updateQuery = "Update " + LEAVE_REQUESTS_TABLE + " SET " + START_DATE_COLUMN + " = '" + dateFormatter.format(startDate) + "', " + END_DATE_COLUMN + " = '" + dateFormatter.format(endDate) + "', " + STATUS_COLUMN + " = '" + status + "', " + NOTES_COLUMN + " = '" + notes + "', " + LEAVE_TYPE_ID_COLUMN + " = '" + leave_type_id + "', " + EMPLOYEE_ID_COLUMN + " = '" + employee_id + "' WHERE " + REQUEST_ID_COLUMN + " = " + request_id + ";";
+            System.out.println(updateQuery);
+            statement.executeUpdate(updateQuery);
+
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle SQL exceptions
+        } finally {
+            AccessDatabaseConnector.closeConnection(conn);
+        }
+    }
+
 }
