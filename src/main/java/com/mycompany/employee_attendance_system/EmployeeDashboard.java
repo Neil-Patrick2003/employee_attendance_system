@@ -1074,21 +1074,17 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     }
 
      //refresh leave request list in admin 
-    private void adminRefreshLeaveRequestList() {
-        DefaultTableModel leaveReqDefaultTableModel = (DefaultTableModel) LeaveRequestTable.getModel();
-
+    private void refreshLeaveRequestList() {
+        DefaultTableModel leaveRequesttTableModel = (DefaultTableModel) LeaveRequestAdminTable.getModel();
         List<LeaveRequest> leaveRequests = LeaveRequestService.getAllLeaveRequests();
-        leaveReqDefaultTableModel.setRowCount(0);
+        leaveRequesttTableModel.setRowCount(0);
 
         System.out.println(leaveRequests.size());
 
         for (int i = 0; i < leaveRequests.size(); i++) {
             LeaveRequest leaveRequest = leaveRequests.get(i);
-//            Object[] rowData = {leaveRequest.};
-//            employeesTableModel.addRow(rowData);
-            Object[] rowData = {leaveRequest.request_id, leaveRequest.startDate, leaveRequest.EndDate, leaveRequest.status, leaveRequest.notes, leaveRequest.leave_type_id, leaveRequest.employee.last_name + ", " + leaveRequest.employee.first_name, leaveRequest.leave_type_id};
-            leaveReqDefaultTableModel.addRow(rowData);
-
+            Object[] rowData = {leaveRequest.request_id, leaveRequest.startDate, leaveRequest.endDate, leaveRequest.status, leaveRequest.notes, leaveRequest.employee.username, leaveRequest.leaveType.name};
+            leaveRequesttTableModel.addRow(rowData);
         }
     }
 
@@ -1113,6 +1109,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     private void LeaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LeaveButtonMouseClicked
         // TODO add your handling code here:
         RIghtPanelTabbed.setSelectedIndex(1);
+        refreshLeaveRequestList();
         resetColor(DashboardButton);
         setColor(LeaveButton);
         resetColor(MyProfileButton);
@@ -1157,7 +1154,8 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     private void LeaveRequestBUttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LeaveRequestBUttonMouseClicked
         // TODO add your handling code here:
         RIghtPanelTabbed.setSelectedIndex(6 );
-        adminRefreshLeaveRequestList();
+        refreshLeaveRequestList();
+        System.out.println("hello");
     }//GEN-LAST:event_LeaveRequestBUttonMouseClicked
 
     /**
