@@ -30,7 +30,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
      */
     public EmployeeDashboard() {
         initComponents();
-        refreshCustomerList();
+        refreshEmployeeList();
         refreshAuthEmployee();
 
         if (this.authenticatedEmployee != null) {
@@ -167,21 +167,21 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
-        adminUpdateLastNameText = new javax.swing.JTextField();
-        adminUpdateFirstNameText = new javax.swing.JTextField();
-        adminUpdateEmailText = new javax.swing.JTextField();
-        adminUpdatePhoneText = new javax.swing.JTextField();
-        adminUpdateAddressTxt = new javax.swing.JTextField();
-        isAdminTextBox = new javax.swing.JCheckBox();
         HiringdateChooser = new com.toedter.calendar.JDateChooser();
+        jLabel35 = new javax.swing.JLabel();
         adminUpdateDeptBox = new javax.swing.JComboBox<>();
+        jLabel37 = new javax.swing.JLabel();
         adminUpdatePositionText = new javax.swing.JTextField();
+        isAdminTextBox = new javax.swing.JCheckBox();
+        jLabel33 = new javax.swing.JLabel();
+        adminEdtEmpBtn1 = new javax.swing.JButton();
         adminEdtEmpBtn = new javax.swing.JButton();
-        warningLabel = new javax.swing.JLabel();
+        viewEmployeeLastNameLabel = new javax.swing.JLabel();
+        viewEmployeeFirstNameLabel = new javax.swing.JLabel();
+        viewEmployeeEmailLabel = new javax.swing.JLabel();
+        viewEmployeePhoneNumberLabel = new javax.swing.JLabel();
+        viewEmployeeAddressLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(220, 220, 220));
@@ -1197,221 +1197,234 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
         jPanel15.setBackground(new java.awt.Color(135, 206, 250));
 
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel9.setText("Last Name                  :      ");
+        jLabel9.setText("Last Name :      ");
 
         jLabel29.setBackground(new java.awt.Color(255, 255, 255));
         jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel29.setText("First Name                  :      ");
+        jLabel29.setText("First Name :      ");
 
         jLabel30.setBackground(new java.awt.Color(255, 255, 255));
         jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel30.setText("Email                           :      ");
+        jLabel30.setText("Email :      ");
 
         jLabel31.setBackground(new java.awt.Color(255, 255, 255));
         jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel31.setText("Phone Number           :      ");
+        jLabel31.setText("Phone Number :      ");
 
         jLabel32.setBackground(new java.awt.Color(255, 255, 255));
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel32.setText("Address                       :      ");
-
-        jLabel33.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel33.setText("Is Admin                     :      ");
+        jLabel32.setText("Address :      ");
 
         jLabel34.setBackground(new java.awt.Color(255, 255, 255));
         jLabel34.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel34.setText("Hiring Date                 :      ");
+        jLabel34.setText("Hiring Date :      ");
+
+        HiringdateChooser.setBackground(new java.awt.Color(255, 255, 255));
+        HiringdateChooser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
         jLabel35.setBackground(new java.awt.Color(255, 255, 255));
         jLabel35.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel35.setText("Department                :");
-
-        jLabel37.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel37.setText("Position                       :");
-
-        adminUpdateLastNameText.setBackground(new java.awt.Color(255, 255, 255));
-        adminUpdateLastNameText.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        adminUpdateLastNameText.setText("jTextField1");
-        adminUpdateLastNameText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
-
-        adminUpdateFirstNameText.setBackground(new java.awt.Color(255, 255, 255));
-        adminUpdateFirstNameText.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        adminUpdateFirstNameText.setText("jTextField2");
-        adminUpdateFirstNameText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
-
-        adminUpdateEmailText.setBackground(new java.awt.Color(255, 255, 255));
-        adminUpdateEmailText.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        adminUpdateEmailText.setText("jTextField3");
-        adminUpdateEmailText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
-
-        adminUpdatePhoneText.setBackground(new java.awt.Color(255, 255, 255));
-        adminUpdatePhoneText.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        adminUpdatePhoneText.setText("jTextField4");
-        adminUpdatePhoneText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
-
-        adminUpdateAddressTxt.setBackground(new java.awt.Color(255, 255, 255));
-        adminUpdateAddressTxt.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        adminUpdateAddressTxt.setText("jTextField5");
-        adminUpdateAddressTxt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
-
-        isAdminTextBox.setBackground(new java.awt.Color(255, 255, 255));
-        isAdminTextBox.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        isAdminTextBox.setText("jCheckBox1");
-        isAdminTextBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
-
-        HiringdateChooser.setBackground(new java.awt.Color(255, 255, 255));
-        HiringdateChooser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        jLabel35.setText("Department  :");
 
         adminUpdateDeptBox.setBackground(new java.awt.Color(255, 255, 255));
         adminUpdateDeptBox.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         adminUpdateDeptBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         adminUpdateDeptBox.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
+        adminUpdateDeptBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminUpdateDeptBoxActionPerformed(evt);
+            }
+        });
+
+        jLabel37.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel37.setText("Position :");
 
         adminUpdatePositionText.setBackground(new java.awt.Color(255, 255, 255));
         adminUpdatePositionText.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         adminUpdatePositionText.setText("jTextField7");
         adminUpdatePositionText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
 
-        adminEdtEmpBtn.setText("jButton1");
+        isAdminTextBox.setBackground(new java.awt.Color(255, 255, 255));
+        isAdminTextBox.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        isAdminTextBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
+        isAdminTextBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                isAdminTextBoxActionPerformed(evt);
+            }
+        });
+
+        jLabel33.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel33.setText("Is Admin :      ");
+
+        adminEdtEmpBtn1.setText("Cancel");
+        adminEdtEmpBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminEdtEmpBtn1MouseClicked(evt);
+            }
+        });
+
+        adminEdtEmpBtn.setText("Update");
         adminEdtEmpBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 adminEdtEmpBtnMouseClicked(evt);
             }
         });
 
-        warningLabel.setText("jLabel36");
+        viewEmployeeLastNameLabel.setBackground(new java.awt.Color(255, 255, 255));
+        viewEmployeeLastNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        viewEmployeeLastNameLabel.setForeground(new java.awt.Color(102, 102, 102));
+        viewEmployeeLastNameLabel.setText("viewEmployeeLastNameLabel");
+
+        viewEmployeeFirstNameLabel.setBackground(new java.awt.Color(255, 255, 255));
+        viewEmployeeFirstNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        viewEmployeeFirstNameLabel.setForeground(new java.awt.Color(102, 102, 102));
+        viewEmployeeFirstNameLabel.setText("viewEmployeeFirstNameLabel");
+
+        viewEmployeeEmailLabel.setBackground(new java.awt.Color(255, 255, 255));
+        viewEmployeeEmailLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        viewEmployeeEmailLabel.setForeground(new java.awt.Color(102, 102, 102));
+        viewEmployeeEmailLabel.setText("viewEmployeeEmailLabel");
+
+        viewEmployeePhoneNumberLabel.setBackground(new java.awt.Color(255, 255, 255));
+        viewEmployeePhoneNumberLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        viewEmployeePhoneNumberLabel.setForeground(new java.awt.Color(102, 102, 102));
+        viewEmployeePhoneNumberLabel.setText("viewEmployeePhoneNumberLabel");
+
+        viewEmployeeAddressLabel.setBackground(new java.awt.Color(255, 255, 255));
+        viewEmployeeAddressLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        viewEmployeeAddressLabel.setForeground(new java.awt.Color(102, 102, 102));
+        viewEmployeeAddressLabel.setText("viewEmployeeAddressLabel");
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addComponent(jLabel34)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(HiringdateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addComponent(jLabel37)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(adminUpdatePositionText, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE))
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addComponent(jLabel35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(adminUpdateDeptBox, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
+                            .addComponent(adminEdtEmpBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(adminEdtEmpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel15Layout.createSequentialGroup()
+                            .addComponent(jLabel33)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(isAdminTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel15Layout.createSequentialGroup()
+                            .addComponent(jLabel29)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(viewEmployeeFirstNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel15Layout.createSequentialGroup()
+                            .addComponent(jLabel9)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(viewEmployeeLastNameLabel))
+                        .addGroup(jPanel15Layout.createSequentialGroup()
+                            .addComponent(jLabel30)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(viewEmployeeEmailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel15Layout.createSequentialGroup()
+                            .addComponent(jLabel31)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(viewEmployeePhoneNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel15Layout.createSequentialGroup()
+                            .addComponent(jLabel32)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(viewEmployeeAddressLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
+        jPanel15Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel29, jLabel30, jLabel31, jLabel32, jLabel33, jLabel34, jLabel35, jLabel37, jLabel9});
+
+        jPanel15Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {HiringdateChooser, adminUpdateDeptBox, adminUpdatePositionText, isAdminTextBox, viewEmployeeLastNameLabel});
+
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(viewEmployeeLastNameLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(viewEmployeeFirstNameLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(viewEmployeeEmailLabel)
+                    .addComponent(jLabel30))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(viewEmployeePhoneNumberLabel)
+                    .addComponent(jLabel31))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(viewEmployeeAddressLabel)
+                    .addComponent(jLabel32))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(HiringdateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(adminUpdateDeptBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(adminUpdatePositionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel37))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel33)
+                    .addComponent(isAdminTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(adminEdtEmpBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(adminEdtEmpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(154, Short.MAX_VALUE))
+        );
+
+        jPanel15Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel29, jLabel30, jLabel31, jLabel32, jLabel33, jLabel34, jLabel35, jLabel37, jLabel9});
+
+        jPanel15Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {HiringdateChooser, adminUpdateDeptBox, adminUpdatePositionText, isAdminTextBox});
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel14Layout.createSequentialGroup()
-                            .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel31)
-                                .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel14Layout.createSequentialGroup()
-                                    .addGap(12, 12, 12)
-                                    .addComponent(isAdminTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(adminUpdateAddressTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                                    .addComponent(adminUpdatePhoneText)))
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
-                            .addComponent(jLabel30)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                            .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(adminUpdateLastNameText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(adminUpdateFirstNameText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(adminUpdateEmailText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(36, 57, Short.MAX_VALUE)))
-                    .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel14Layout.createSequentialGroup()
-                            .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(adminUpdateDeptBox, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(42, 58, Short.MAX_VALUE))
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel14Layout.createSequentialGroup()
-                                .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(adminUpdatePositionText))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
-                                .addComponent(warningLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(adminEdtEmpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel14Layout.createSequentialGroup()
-                                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel33)
-                                    .addGroup(jPanel14Layout.createSequentialGroup()
-                                        .addComponent(jLabel34)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(HiringdateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))))))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(adminUpdateLastNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(adminUpdateFirstNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(adminUpdateEmailText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(adminUpdatePhoneText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(adminUpdateAddressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(isAdminTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                    .addComponent(HiringdateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addComponent(adminUpdateDeptBox, javax.swing.GroupLayout.PREFERRED_SIZE, 34, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(adminUpdatePositionText)
-                        .addGap(41, 41, 41)
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(adminEdtEmpBtn)
-                            .addComponent(warningLabel))
-                        .addGap(86, 86, 86))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout adminManageEmployeeLayout = new javax.swing.GroupLayout(adminManageEmployee);
@@ -1438,7 +1451,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void refreshCustomerList() {
+    private void refreshEmployeeList() {
         DefaultTableModel employeesTableModel = (DefaultTableModel) AdminEmployeesTable.getModel();
         List<Employee> employees = EmployeeService.getAllEmployees();
         employeesTableModel.setRowCount(0);
@@ -1568,7 +1581,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                 || position.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please customer to update.");
         } else {
-            EmployeeService.updateEmployee(authenticatedEmployee.id, last_name, first_name, email, phone_number, address, this.authenticatedEmployee.username, this.authenticatedEmployee.password, this.authenticatedEmployee.is_admin, department.department_id, position);
+            EmployeeService.updateEmployee(authenticatedEmployee.id, last_name, first_name, email, phone_number, address, this.authenticatedEmployee.username, this.authenticatedEmployee.password, this.authenticatedEmployee.is_admin, HiringdateChooser.getDate(), department.department_id, position);
             updateProfileEditBtn.setText("Edit Profile");
             updateProfileSubmitBtn.setVisible(false);
             updateProfileSubmitBtn.setBackground(new Color(255, 255, 255));
@@ -1627,11 +1640,11 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
         if (choice == 0) {
             RIghtPanelTabbed.setSelectedIndex(4);
-            adminUpdateLastNameText.setText(this.selectedEmployee.last_name);
-            adminUpdateFirstNameText.setText(this.selectedEmployee.first_name);
-            adminUpdateEmailText.setText(this.selectedEmployee.email);
-            adminUpdatePhoneText.setText(this.selectedEmployee.phone_number);
-            adminUpdateAddressTxt.setText(this.selectedEmployee.address);
+            viewEmployeeLastNameLabel.setText(this.selectedEmployee.last_name);
+            viewEmployeeFirstNameLabel.setText(this.selectedEmployee.first_name);
+            viewEmployeeEmailLabel.setText(this.selectedEmployee.email);
+            viewEmployeeAddressLabel.setText(this.selectedEmployee.phone_number);
+            viewEmployeeAddressLabel.setText(this.selectedEmployee.address);
         }
 
     }//GEN-LAST:event_AdminEmployeesTableMouseClicked
@@ -1646,64 +1659,48 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
     private void adminEdtEmpBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminEdtEmpBtnMouseClicked
         // TODO add your handling code here:
-        adminUpdateLastNameText.setText(this.selectedEmployee.last_name);
-        adminUpdateFirstNameText.setText(this.selectedEmployee.first_name);
-        adminUpdateEmailText.setText(this.selectedEmployee.email);
-        adminUpdatePhoneText.setText(this.selectedEmployee.phone_number);
-        adminUpdateAddressTxt.setText(this.selectedEmployee.address);
+        viewEmployeeLastNameLabel.setText(this.selectedEmployee.last_name);
+        viewEmployeeFirstNameLabel.setText(this.selectedEmployee.first_name);
+        viewEmployeeEmailLabel.setText(this.selectedEmployee.email);
+        viewEmployeePhoneNumberLabel.setText(this.selectedEmployee.phone_number);
+        viewEmployeeAddressLabel.setText(this.selectedEmployee.address);
 
         Boolean isAdmin = isAdminTextBox.isSelected();
         Date hiring_date = HiringdateChooser.getDate();
-        if (hiring_date != null) {
-            warningLabel.setText("Please Select End Date. ");
-        } else {
-            String last_name = (String) adminUpdateLastNameText.getText();
-            String first_name = (String) adminUpdateFirstNameText.getText();
-            String email = (String) adminUpdateEmailText.getText();
-            String phone_number = (String) adminUpdatePhoneText.getText();
-            String address = (String) adminUpdateAddressTxt.getText();
-            String position = (String) adminUpdatePositionText.getText();
-            String department_name = adminUpdateDeptBox.getSelectedItem().toString();
 
-            Department department = DepartmentService.getDepartmentByName(department_name);
-
-            if (last_name.isEmpty() || first_name.isEmpty() || email.isEmpty() || phone_number.isEmpty() || address.isEmpty()
-                    || position.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Please customer to update.");
-            } else {
-                EmployeeService.updateEmployee(authenticatedEmployee.id, last_name, first_name, email, phone_number, address, this.selectedEmployee.username, this.selectedEmployee.password, isAdmin, department.department_id, position);
-
-                JOptionPane.showMessageDialog(rootPane, "Updated Successfully.");
-                refreshAuthEmployee();
-
-            }
-        }
-
-        String last_name = (String) LastNameText.getText();
-        String first_name = (String) FirstNameText.getText();
-        String email = (String) EmailText.getText();
-        String phone_number = (String) PhoneNumberText.getText();
-        String address = (String) AddressText.getText();
-        String position = (String) PositionText.getText();
-        String department_name = updateProfileDeptCombobox.getSelectedItem().toString();
+//        String last_name = (String) adminUpdateLastNameText.getText();
+//        String first_name = (String) adminUpdateFirstNameText.getText();
+//        String email = (String) adminUpdateEmailText.getText();
+//        String phone_number = (String) adminUpdatePhoneText.getText();
+//        String address = (String) adminUpdateAddressTxt.getText();
+        String position = (String) adminUpdatePositionText.getText();
+        String department_name = adminUpdateDeptBox.getSelectedItem().toString();
+        
 
         Department department = DepartmentService.getDepartmentByName(department_name);
 
-        if (last_name.isEmpty() || first_name.isEmpty() || email.isEmpty() || phone_number.isEmpty() || address.isEmpty()
-                || position.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please customer to update.");
+        if ( position.isEmpty() || hiring_date == null || department_name == null) {
+            JOptionPane.showMessageDialog(null, "Please complete the form.");
         } else {
-            EmployeeService.updateEmployee(authenticatedEmployee.id, last_name, first_name, email, phone_number, address, this.authenticatedEmployee.username, this.authenticatedEmployee.password, this.authenticatedEmployee.is_admin, department.department_id, position);
-            updateProfileEditBtn.setText("Edit Profile");
-            updateProfileSubmitBtn.setVisible(false);
-            updateProfileSubmitBtn.setBackground(new Color(255, 255, 255));
+            EmployeeService.updateEmployee(this.selectedEmployee.id, this.selectedEmployee.last_name, this.selectedEmployee.first_name, this.selectedEmployee.email, this.selectedEmployee.phone_number, this.selectedEmployee.address, this.selectedEmployee.username, this.selectedEmployee.password, isAdmin, hiring_date, department.department_id, position);
 
             JOptionPane.showMessageDialog(rootPane, "Updated Successfully.");
-            refreshAuthEmployee();
-            this.setUpdateProfileFieldsEditableState(false);
+            refreshEmployeeList();
 
         }
     }//GEN-LAST:event_adminEdtEmpBtnMouseClicked
+
+    private void adminUpdateDeptBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminUpdateDeptBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adminUpdateDeptBoxActionPerformed
+
+    private void isAdminTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isAdminTextBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_isAdminTextBoxActionPerformed
+
+    private void adminEdtEmpBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminEdtEmpBtn1MouseClicked
+        RIghtPanelTabbed.setSelectedIndex(3);
+    }//GEN-LAST:event_adminEdtEmpBtn1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1776,13 +1773,9 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     private javax.swing.JTabbedPane RIghtPanelTabbed;
     private javax.swing.JLabel TItleLabel;
     private javax.swing.JButton adminEdtEmpBtn;
+    private javax.swing.JButton adminEdtEmpBtn1;
     private javax.swing.JPanel adminManageEmployee;
-    private javax.swing.JTextField adminUpdateAddressTxt;
     private javax.swing.JComboBox<String> adminUpdateDeptBox;
-    private javax.swing.JTextField adminUpdateEmailText;
-    private javax.swing.JTextField adminUpdateFirstNameText;
-    private javax.swing.JTextField adminUpdateLastNameText;
-    private javax.swing.JTextField adminUpdatePhoneText;
     private javax.swing.JTextField adminUpdatePositionText;
     private javax.swing.JTable employeeRequestLeaveTable;
     private javax.swing.JCheckBox isAdminTextBox;
@@ -1845,6 +1838,10 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> updateProfileDeptCombobox;
     private javax.swing.JButton updateProfileEditBtn;
     private javax.swing.JButton updateProfileSubmitBtn;
-    private javax.swing.JLabel warningLabel;
+    private javax.swing.JLabel viewEmployeeAddressLabel;
+    private javax.swing.JLabel viewEmployeeEmailLabel;
+    private javax.swing.JLabel viewEmployeeFirstNameLabel;
+    private javax.swing.JLabel viewEmployeeLastNameLabel;
+    private javax.swing.JLabel viewEmployeePhoneNumberLabel;
     // End of variables declaration//GEN-END:variables
 }
