@@ -4,6 +4,9 @@
  */
 package com.mycompany.employee_attendance_system;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author Neil Patrick
@@ -19,12 +22,14 @@ public class Employee {
     String username;
     String password;
     boolean is_admin;
-    String hiring_date;
+    Date hiring_date;
     int department_id;
     String position;
     Department department;
 
-    public Employee(int id, String last_name, String first_name, String email, String phone_number, String address, String username, String password, boolean is_admin, String hiring_date, int department_id, String position) {
+    public static final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+
+    public Employee(int id, String last_name, String first_name, String email, String phone_number, String address, String username, String password, boolean is_admin, Date hiring_date, int department_id, String position) {
         this.id = id;
         this.last_name = last_name;
         this.first_name = first_name;
@@ -42,8 +47,13 @@ public class Employee {
     public void setDepartment(Department department) {
         this.department = department;
     }
-    
+
     public String getFullName() {
         return this.first_name + " " + this.last_name;
     }
+
+    public String getFormattedHiringDate() {
+        return dateFormatter.format(this.hiring_date);
+    }
+
 }
