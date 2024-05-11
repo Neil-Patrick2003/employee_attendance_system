@@ -92,7 +92,6 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         Check_In_Button = new javax.swing.JButton();
         Check_In_Button1 = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
         NameLabel = new javax.swing.JLabel();
         Position_Label = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -107,6 +106,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jPanel13 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         ProfileTab = new javax.swing.JPanel();
         FirstNameLabel = new javax.swing.JPanel();
         LastNameLabel = new javax.swing.JLabel();
@@ -186,7 +186,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         LeftPanel.setMinimumSize(new java.awt.Dimension(200, 600));
         LeftPanel.setPreferredSize(new java.awt.Dimension(200, 600));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Neil Patrick\\Downloads\\icons8-user-90.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/employee_attendance_system/icons/icons8-user-90.png"))); // NOI18N
 
         DashboardButton.setBackground(new java.awt.Color(100, 206, 250));
         DashboardButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -362,7 +362,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(135, 206, 235));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\Neil Patrick\\Downloads\\icons8-attendance-30.png")); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/employee_attendance_system/icons/icons8-attendance-30.png"))); // NOI18N
         jLabel10.setText("jLabel10");
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -426,8 +426,6 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Neil Patrick\\Downloads\\icons8-test-account-60 (2).png")); // NOI18N
-
         NameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         NameLabel.setForeground(new java.awt.Color(102, 102, 102));
         NameLabel.setText("Surname, Firstname MI.");
@@ -440,8 +438,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
         jPanel9.setBackground(new java.awt.Color(135, 206, 235));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\Neil Patrick\\Downloads\\icons8-empty-hourglass-30.png")); // NOI18N
-        jLabel12.setText("jLabel12");
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/employee_attendance_system/icons/icons8-empty-hourglass-30.png"))); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -531,7 +528,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
         jPanel13.setBackground(new java.awt.Color(135, 206, 235));
 
-        jLabel16.setIcon(new javax.swing.ImageIcon("C:\\Users\\Neil Patrick\\Downloads\\icons8-profiles-30.png")); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/employee_attendance_system/icons/icons8-profiles-30.png"))); // NOI18N
         jLabel16.setText("jLabel12");
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -547,7 +544,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -571,6 +568,8 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 97, Short.MAX_VALUE))
         );
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/employee_attendance_system/icons/icons8-test-account-60 (2).png"))); // NOI18N
 
         javax.swing.GroupLayout DashboradTabLayout = new javax.swing.GroupLayout(DashboradTab);
         DashboradTab.setLayout(DashboradTabLayout);
@@ -614,7 +613,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                     .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 26, Short.MAX_VALUE))
+                .addGap(0, 28, Short.MAX_VALUE))
         );
 
         RIghtPanelTabbed.addTab("dashboard", DashboradTab);
@@ -898,7 +897,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         AddLeaveReqButton.setBackground(new java.awt.Color(50, 205, 50));
         AddLeaveReqButton.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         AddLeaveReqButton.setForeground(new java.awt.Color(255, 255, 255));
-        AddLeaveReqButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Neil Patrick\\Downloads\\icons8-plus-30 (2).png")); // NOI18N
+        AddLeaveReqButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/employee_attendance_system/icons/icons8-plus-30 (2).png"))); // NOI18N
         AddLeaveReqButton.setText("Add Time Off/Leave Request");
         AddLeaveReqButton.setBorder(null);
         AddLeaveReqButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -993,7 +992,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(135, 206, 235));
 
-        jLabel22.setIcon(new javax.swing.ImageIcon("C:\\Users\\Neil Patrick\\Downloads\\icons8-employee-30.png")); // NOI18N
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/employee_attendance_system/icons/icons8-employee-30.png"))); // NOI18N
 
         jLabel23.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
@@ -1067,7 +1066,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(135, 206, 235));
 
-        jLabel24.setIcon(new javax.swing.ImageIcon("C:\\Users\\Neil Patrick\\Downloads\\icons8-leave-30.png")); // NOI18N
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/employee_attendance_system/icons/icons8-leave-30.png"))); // NOI18N
 
         jLabel26.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
@@ -1137,7 +1136,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(135, 206, 235));
 
-        jLabel27.setIcon(new javax.swing.ImageIcon("C:\\Users\\Neil Patrick\\Downloads\\icons8-timesheet-30.png")); // NOI18N
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/employee_attendance_system/icons/icons8-timesheet-30.png"))); // NOI18N
 
         jLabel28.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
