@@ -881,6 +881,11 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        employeeRequestLeaveTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                employeeRequestLeaveTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(employeeRequestLeaveTable);
         if (employeeRequestLeaveTable.getColumnModel().getColumnCount() > 0) {
             employeeRequestLeaveTable.getColumnModel().getColumn(0).setResizable(false);
@@ -1660,7 +1665,6 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         
         LeaveRequest leaveRequest = LeaveRequestService.getLeaveRequestById(leaveRequestId);
 
-        System.out.println(leaveRequest.employee.getFullName());
 
         StringBuilder message = new StringBuilder();
         message.append("_______________________________________________ ").append("\n\n");
@@ -1670,9 +1674,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         message.append("End Date: ").append(leaveRequest.getFormattedEndDate()).append("\n");
         message.append("Duration: ").append(leaveRequest.getDuration()).append(" day/s.").append("\n\n");
         message.append("Notes: ").append(leaveRequest.notes).append("\n");
-        
-        System.out.println("status" + leaveRequest.status);
-        System.out.println("duration: " + leaveRequest.getDuration());
+     
 
         if (leaveRequest.status.equals("For approval")) {
             System.out.println("ygtumtytytyyty");
@@ -1737,6 +1739,41 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     private void adminEdtEmpBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminEdtEmpBtn1MouseClicked
         RIghtPanelTabbed.setSelectedIndex(3);
     }//GEN-LAST:event_adminEdtEmpBtn1MouseClicked
+
+    private void employeeRequestLeaveTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeRequestLeaveTableMouseClicked
+        // TODO add your handling code here:
+        int i = employeeRequestLeaveTable.getSelectedRow();
+        int leaveRequestId = (int) employeeRequestLeaveTable.getValueAt(i, 0);
+        
+        LeaveRequest leaveRequest = LeaveRequestService.getLeaveRequestById(leaveRequestId);
+
+
+        StringBuilder message = new StringBuilder();
+        message.append("_______________________________________________ ").append("\n\n");
+        message.append("Leave Type: ").append(leaveRequest.leaveType.name).append("\n");
+        message.append("Start Date: ").append(leaveRequest.getFormattedStartDate()).append("\n");
+        message.append("End Date: ").append(leaveRequest.getFormattedEndDate()).append("\n");
+        message.append("Duration: ").append(leaveRequest.getDuration()).append(" day/s.").append("\n\n");
+        message.append("Notes: ").append(leaveRequest.notes).append("\n");
+     
+        boolean leaveNotStarted = leaveRequest.startDate.after(new Date());
+        
+        System.out.println(leaveNotStarted);
+
+        if (leaveRequest.status.equals("Approved") && leaveNotStarted) {
+            System.out.println("ygtumtytytyyty");
+            Object[] options = {"Cancel Leave", "Close"};
+            int choice = JOptionPane.showOptionDialog(null, message.toString(), "Leave Request Details", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+            if (choice == 0) {
+                LeaveRequestService.updateLeaveRequest(leaveRequestId, leaveRequest.startDate, leaveRequest.endDate, "Cancelled", leaveRequest.notes, leaveRequest.leave_type_id, leaveRequest.employee_id);
+                refreshLeaveRequestList();
+            }           
+        }else{
+            Object[] options2 = {"Okay"};
+            int choice = JOptionPane.showOptionDialog(null, message.toString(), "Leave Request Details", JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE, null, options2, options2[0]);
+        }
+    }//GEN-LAST:event_employeeRequestLeaveTableMouseClicked
 
     /**
      * @param args the command line arguments
