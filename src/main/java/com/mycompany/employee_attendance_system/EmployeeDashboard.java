@@ -200,7 +200,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Dashboard");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Neil Patrick\\Downloads\\icons8-dashboard-50 (1).png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/employee_attendance_system/icons/icons8-dashboard-50 (1).png"))); // NOI18N
 
         javax.swing.GroupLayout DashboardButtonLayout = new javax.swing.GroupLayout(DashboardButton);
         DashboardButton.setLayout(DashboardButtonLayout);
@@ -230,7 +230,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Neil Patrick\\Downloads\\icons8-airplane-take-off-30 (2).png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/employee_attendance_system/icons/icons8-airplane-take-off-30 (2).png"))); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Leave");
@@ -269,7 +269,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("My Profile");
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Neil Patrick\\Downloads\\icons8-test-account-30 (1).png")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/employee_attendance_system/icons/icons8-test-account-30 (1).png"))); // NOI18N
 
         javax.swing.GroupLayout MyProfileButtonLayout = new javax.swing.GroupLayout(MyProfileButton);
         MyProfileButton.setLayout(MyProfileButtonLayout);
@@ -302,7 +302,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setText("Admin");
 
-        jLabel19.setIcon(new javax.swing.ImageIcon("C:\\Users\\Neil Patrick\\Downloads\\icons8-cog-20.png")); // NOI18N
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/employee_attendance_system/icons/icons8-cog-20.png"))); // NOI18N
 
         javax.swing.GroupLayout AdminButtonLayout = new javax.swing.GroupLayout(AdminButton);
         AdminButton.setLayout(AdminButtonLayout);

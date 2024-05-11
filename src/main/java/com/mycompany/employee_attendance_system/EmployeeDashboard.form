@@ -143,7 +143,7 @@
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Neil Patrick\Downloads\icons8-dashboard-50 (1).png"/>
+                  <Image iconType="3" name="/com/mycompany/employee_attendance_system/icons/icons8-dashboard-50 (1).png"/>
                 </Property>
               </Properties>
             </Component>
@@ -193,7 +193,7 @@
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Neil Patrick\Downloads\icons8-airplane-take-off-30 (2).png"/>
+                  <Image iconType="3" name="/com/mycompany/employee_attendance_system/icons/icons8-airplane-take-off-30 (2).png"/>
                 </Property>
               </Properties>
             </Component>
@@ -254,7 +254,7 @@
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Neil Patrick\Downloads\icons8-test-account-30 (1).png"/>
+                  <Image iconType="3" name="/com/mycompany/employee_attendance_system/icons/icons8-test-account-30 (1).png"/>
                 </Property>
               </Properties>
             </Component>
@@ -307,7 +307,7 @@
             <Component class="javax.swing.JLabel" name="jLabel19">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Neil Patrick\Downloads\icons8-cog-20.png"/>
+                  <Image iconType="3" name="/com/mycompany/employee_attendance_system/icons/icons8-cog-20.png"/>
                 </Property>
               </Properties>
             </Component>
