@@ -66,6 +66,14 @@ CREATE TABLE `holidays` (
   PRIMARY KEY (`holiday_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+DROP TABLE IF EXISTS `leave_types`;
+CREATE TABLE `leave_types` (
+  `leave_type_id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `leave_limit` int unsigned NOT NULL,
+  PRIMARY KEY (`leave_type_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 DROP TABLE IF EXISTS `leave_requests`;
 CREATE TABLE `leave_requests` (
   `request_id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -82,12 +90,17 @@ CREATE TABLE `leave_requests` (
   CONSTRAINT `leave_requests_leave_type_id_foreign` FOREIGN KEY (`leave_type_id`) REFERENCES `leave_types` (`leave_type_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-DROP TABLE IF EXISTS `leave_types`;
-CREATE TABLE `leave_types` (
-  `leave_type_id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `leave_limit` int unsigned NOT NULL,
-  PRIMARY KEY (`leave_type_id`)
+DROP TABLE IF EXISTS `overtime_requests`;
+CREATE TABLE `overtime_requests` (
+  `request_id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `start_date` datetime NOT NULL,
+  `end_date` datetime NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `notes` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `employee_id` bigint unsigned NOT NULL,
+  PRIMARY KEY (`request_id`),
+  KEY `overtime_requests_employee_id_foreign` (`employee_id`),
+  CONSTRAINT `overtime_requests_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`employee_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DELIMITER $$
