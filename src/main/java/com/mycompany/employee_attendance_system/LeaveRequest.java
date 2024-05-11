@@ -6,6 +6,7 @@ package com.mycompany.employee_attendance_system;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -51,6 +52,12 @@ public class LeaveRequest {
     
     public String getFormattedEndDate() {
         return dateFormatter.format(this.endDate);
+    }
+    
+    public int getDuration () {
+        long diff = (long) this.endDate.getTime() - this.startDate.getTime();
+        
+        return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 1;
     }
     
 }

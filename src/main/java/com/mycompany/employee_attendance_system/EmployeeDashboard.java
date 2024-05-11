@@ -1060,6 +1060,11 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                 "Leave Request ID", "Start Date", "End Date", "Status ", "Notes", "Employee Name", "Leave type"
             }
         ));
+        LeaveRequestAdminTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LeaveRequestAdminTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(LeaveRequestAdminTable);
 
         jPanel1.setBackground(new java.awt.Color(135, 206, 235));
@@ -1636,7 +1641,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         message.append("Email: ").append(email).append("\n\n");
 
         Object[] options = {"Update Employee.", "Close"};
-        int choice = JOptionPane.showOptionDialog(null, message.toString(), "Transaction Details", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        int choice = JOptionPane.showOptionDialog(null, message.toString(), "Updated Information", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 
         if (choice == 0) {
             RIghtPanelTabbed.setSelectedIndex(4);
@@ -1652,9 +1657,41 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     private void LeaveRequestAdminTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LeaveRequestAdminTableMouseClicked
         int i = LeaveRequestAdminTable.getSelectedRow();
         int leaveRequestId = (int) LeaveRequestAdminTable.getValueAt(i, 0);
-
+        
         LeaveRequest leaveRequest = LeaveRequestService.getLeaveRequestById(leaveRequestId);
+
         System.out.println(leaveRequest.employee.getFullName());
+
+        StringBuilder message = new StringBuilder();
+        message.append("_______________________________________________ ").append("\n\n");
+        message.append("Employee Name: ").append(leaveRequest.employee.getFullName()).append("\n");
+        message.append("Leave Type: ").append(leaveRequest.leaveType.name).append("\n");
+        message.append("Start Date: ").append(leaveRequest.getFormattedStartDate()).append("\n");
+        message.append("End Date: ").append(leaveRequest.getFormattedEndDate()).append("\n");
+        message.append("Duration: ").append(leaveRequest.getDuration()).append(" day/s.").append("\n\n");
+        message.append("Notes: ").append(leaveRequest.notes).append("\n");
+        
+        System.out.println("status" + leaveRequest.status);
+        System.out.println("duration: " + leaveRequest.getDuration());
+
+        if (leaveRequest.status.equals("For approval")) {
+            System.out.println("ygtumtytytyyty");
+            Object[] options = {"Approved", "Reject"};
+            int choice = JOptionPane.showOptionDialog(null, message.toString(), "Leave Request Details", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+            if (choice == 0) {
+                LeaveRequestService.updateLeaveRequest(leaveRequestId, leaveRequest.startDate, leaveRequest.endDate, "Approved", leaveRequest.notes, leaveRequest.leave_type_id, leaveRequest.employee_id);
+                refreshLeaveRequestList();
+            }
+            else{
+                LeaveRequestService.updateLeaveRequest(leaveRequestId, leaveRequest.startDate, leaveRequest.endDate, "Rejected", leaveRequest.notes, leaveRequest.leave_type_id, leaveRequest.employee_id);
+            }
+        }else{
+            Object[] options2 = {"Okay"};
+            int choice = JOptionPane.showOptionDialog(null, message.toString(), "Leave Request Details", JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE, null, options2, options2[0]);
+        }
+
+
     }//GEN-LAST:event_LeaveRequestAdminTableMouseClicked
 
     private void adminEdtEmpBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminEdtEmpBtnMouseClicked
@@ -1675,11 +1712,10 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 //        String address = (String) adminUpdateAddressTxt.getText();
         String position = (String) adminUpdatePositionText.getText();
         String department_name = adminUpdateDeptBox.getSelectedItem().toString();
-        
 
         Department department = DepartmentService.getDepartmentByName(department_name);
 
-        if ( position.isEmpty() || hiring_date == null || department_name == null) {
+        if (position.isEmpty() || hiring_date == null || department_name == null) {
             JOptionPane.showMessageDialog(null, "Please complete the form.");
         } else {
             EmployeeService.updateEmployee(this.selectedEmployee.id, this.selectedEmployee.last_name, this.selectedEmployee.first_name, this.selectedEmployee.email, this.selectedEmployee.phone_number, this.selectedEmployee.address, this.selectedEmployee.username, this.selectedEmployee.password, isAdmin, hiring_date, department.department_id, position);
