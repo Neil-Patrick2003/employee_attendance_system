@@ -4,13 +4,6 @@
  */
 package com.mycompany.employee_attendance_system;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Timestamp;
-import java.time.LocalDate;
-
 /**
  *
  * @author Neil Patrick
@@ -21,33 +14,31 @@ public class AttendanceRecordService {
     private static final String TIME_IN_COLUMN = "time_in";
     private static final String TIME_OUT_COLUMN = "time_out";
     private static final String EMPLOYEE_ID_COLUMN = "employee_id";
-    private static final String DATE_COLUMN = "date";
-    private static final String STATUS_COLUMN = "status";
     
-    public static void addAttendanceRecord(LocalDate date, Timestamp timeIn, Timestamp timeOut, int employee_id, String status) {
-        Connection conn = AccessDatabaseConnector.connect();
-        try {
-
-            // Execute an INSERT query
-            try (Statement statement = conn.createStatement()) {
-                // Execute an INSERT query
-
-                String insertQuery = "INSERT INTO " + ATTENDANCE_RECORDS_TABLE + " (" + DATE_COLUMN + ", " + TIME_IN_COLUMN + ", " + TIME_OUT_COLUMN + ", " + EMPLOYEE_ID_COLUMN + ", " + STATUS_COLUMN  +  " ) VALUES ('" + date + "', '" + timeIn + "', '" + timeOut + "', '" + employee_id + "', '" + status  + "');";
-                System.out.println(insertQuery);
-                int rowsAffected = statement.executeUpdate(insertQuery);
-                // Check the number of rows affected
-                if (rowsAffected > 0) {
-                    System.out.println("Insertion successful. Rows affected: " + rowsAffected);
-                } else {
-                    System.out.println("Insertion failed.");
-                }
-                // Close the statement
-            }
-        } catch (SQLException e) {
-            System.out.print(e);
-        } finally {
-            AccessDatabaseConnector.closeConnection(conn);
-        }
-    }
+//    public static void addAttendanceRecord(LocalDate date, Timestamp timeIn, Timestamp timeOut, int employee_id, String status) {
+//        Connection conn = AccessDatabaseConnector.connect();
+//        try {
+//
+//            // Execute an INSERT query
+//            try (Statement statement = conn.createStatement()) {
+//                // Execute an INSERT query
+//
+//                String insertQuery = "INSERT INTO " + ATTENDANCE_RECORDS_TABLE + " (" + DATE_COLUMN + ", " + TIME_IN_COLUMN + ", " + TIME_OUT_COLUMN + ", " + EMPLOYEE_ID_COLUMN + ", " + STATUS_COLUMN  +  " ) VALUES ('" + date + "', '" + timeIn + "', '" + timeOut + "', '" + employee_id + "', '" + status  + "');";
+//                System.out.println(insertQuery);
+//                int rowsAffected = statement.executeUpdate(insertQuery);
+//                // Check the number of rows affected
+//                if (rowsAffected > 0) {
+//                    System.out.println("Insertion successful. Rows affected: " + rowsAffected);
+//                } else {
+//                    System.out.println("Insertion failed.");
+//                }
+//                // Close the statement
+//            }
+//        } catch (SQLException e) {
+//            System.out.print(e);
+//        } finally {
+//            AccessDatabaseConnector.closeConnection(conn);
+//        }
+//    }
     
 }
