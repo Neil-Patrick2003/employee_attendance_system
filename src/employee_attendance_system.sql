@@ -90,6 +90,7 @@ CREATE TABLE `leave_types` (
   PRIMARY KEY (`leave_type_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+DELIMITER $$
 CREATE FUNCTION calculate_leave_balance_for_employee(employee_id INT, leave_type_id INT) RETURNS INT
 BEGIN
     DECLARE maximum_limit INT;
@@ -102,7 +103,8 @@ BEGIN
     -- If leave type exists in leave_requests, calculate total days taken for the specified employee
     SELECT IFNULL(SUM(DATEDIFF(end_date, start_date) + 1), 0) INTO total_days_taken 
     FROM leave_requests 
-    WHERE leave_requests.leave_type_id = leave_type_id AND leave_requests.employee_id = employee_id;
+    WHERE leave_requests.leave_type_id = leave_type_id AND leave_requests.employee_id = employee_id
+    AND leave_requests.status = 'Approved';
 
     -- Calculate leave balance
     IF total_days_taken > 0 THEN
@@ -112,7 +114,9 @@ BEGIN
     END IF;
 
     RETURN leave_balance;
-END;
+END$$
+
+DELIMITER ;
 
 
 

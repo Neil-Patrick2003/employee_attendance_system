@@ -8,7 +8,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,6 +33,8 @@ public class EmployeeService {
     private static final String HIRING_DATE_COLUMN = "hiring_date";
     private static final String DEPARTMENT_ID_COLUMN = "department_id";
     private static final String POSITION_COLUMN = "position";
+
+    public static final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
 
     public static Employee getByUsernameAndPassword(String username, String password) {
         String selectQuery = "SELECT employees.*, departments.department_name FROM employees JOIN departments ON employees.department_id = departments.department_id "
@@ -56,9 +60,10 @@ public class EmployeeService {
                 String phone_number = resultSet.getString(PHONE_NUMBER_COLUMN);
                 String address = resultSet.getString(ADDRESS_COLUMN);
                 boolean is_admin = resultSet.getBoolean(IS_ADMIN_COLUMN);
-                String hiring_date = resultSet.getString(HIRING_DATE_COLUMN);
+
                 int department_id = resultSet.getInt(DEPARTMENT_ID_COLUMN);
                 String position = resultSet.getString(POSITION_COLUMN);
+                Date hiring_date = hiring_date = resultSet.getDate(HIRING_DATE_COLUMN);
 
                 employee = new Employee(id, last_name, first_name, email, phone_number, address, username, password, is_admin, hiring_date, department_id, position);
                 String department_name = resultSet.getString(DepartmentService.DEPARTMENT_NAME_COLUMN);
@@ -80,7 +85,7 @@ public class EmployeeService {
 
         return null;
     }
-    
+
     public static Employee getEmployeeByField(String field, String value) {
         String selectQuery = "SELECT employees.*, departments.department_name FROM employees JOIN departments ON employees.department_id = departments.department_id "
                 + " WHERE " + field + " = '" + value + "' LIMIT 1;";
@@ -107,9 +112,9 @@ public class EmployeeService {
                 String phone_number = resultSet.getString(PHONE_NUMBER_COLUMN);
                 String address = resultSet.getString(ADDRESS_COLUMN);
                 boolean is_admin = resultSet.getBoolean(IS_ADMIN_COLUMN);
-                String hiring_date = resultSet.getString(HIRING_DATE_COLUMN);
                 int department_id = resultSet.getInt(DEPARTMENT_ID_COLUMN);
                 String position = resultSet.getString(POSITION_COLUMN);
+                Date hiring_date = hiring_date = resultSet.getDate(HIRING_DATE_COLUMN);
 
                 employee = new Employee(id, last_name, first_name, email, phone_number, address, username, password, is_admin, hiring_date, department_id, position);
                 String department_name = resultSet.getString(DepartmentService.DEPARTMENT_NAME_COLUMN);
@@ -131,7 +136,6 @@ public class EmployeeService {
 
         return null;
     }
-    
 
     public static void addEmployee(String last_name, String first_name, String email, String phone_number, String address, String username, String password, boolean is_admin, int department_id, String position) {
         Connection conn = AccessDatabaseConnector.connect();
@@ -183,10 +187,10 @@ public class EmployeeService {
                 String username = resultSet.getString(USERNAME_COLUMN);
                 String password = resultSet.getString(PASSWORD_COLUMN);
                 Boolean is_admin = resultSet.getBoolean(IS_ADMIN_COLUMN);
-                String hiring_date = resultSet.getString(HIRING_DATE_COLUMN);
                 int department_id = resultSet.getInt(DEPARTMENT_ID_COLUMN);
                 String position = resultSet.getString(POSITION_COLUMN);
                 String department_name = resultSet.getString(DepartmentService.DEPARTMENT_NAME_COLUMN);
+                Date hiring_date = hiring_date = resultSet.getDate(HIRING_DATE_COLUMN);
 
                 Employee employee = new Employee(employee_id, last_name, first_name, email, phone_number, address, username, password, is_admin, hiring_date, department_id, position);
                 Department department = new Department(department_id, department_name);
@@ -211,10 +215,10 @@ public class EmployeeService {
         return null;
     }
 
-    public static void updateEmployee(int employee_id, String last_name, String first_name, String email, String phone_number, String address, String username, String password, boolean is_admin, int department_id, String position) {
+    public static void updateEmployee(int employee_id, String last_name, String first_name, String email, String phone_number, String address, String username, String password, boolean is_admin, Date hiringDate, int department_id, String position) {
         Connection conn = AccessDatabaseConnector.connect();
         try (Statement statement = conn.createStatement()) {
-            String updateQuery = "Update " + EMPLOYEES_TABLE + " SET " + LAST_NAME_COLUMN + " = '" + last_name + "', " + FIRST_NAME_COLUMN + " = '" + first_name + "', " + EMAIL_COLUMN + " = '" + email + "', " + PHONE_NUMBER_COLUMN + " = '" + phone_number + "', " + ADDRESS_COLUMN + " = '" + address + "', " + USERNAME_COLUMN + " = '" + username + "', " + PASSWORD_COLUMN + " = '" + password + "', " + IS_ADMIN_COLUMN + " = " + is_admin + ", " + DEPARTMENT_ID_COLUMN + " = '" + department_id + "', " + POSITION_COLUMN + " = '" + position + "' WHERE " + EMPLOYEE_ID_COLUMN + " = " + employee_id + ";";
+            String updateQuery = "Update " + EMPLOYEES_TABLE + " SET " + LAST_NAME_COLUMN + " = '" + last_name + "', " + FIRST_NAME_COLUMN + " = '" + first_name + "', " + EMAIL_COLUMN + " = '" + email + "', " + PHONE_NUMBER_COLUMN + " = '" + phone_number + "', " + ADDRESS_COLUMN + " = '" + address + "', " + USERNAME_COLUMN + " = '" + username + "', " + PASSWORD_COLUMN + " = '" + password + "', " + IS_ADMIN_COLUMN + " = " + is_admin + ", " + DEPARTMENT_ID_COLUMN + " = '" + department_id + "', " + POSITION_COLUMN + " = '" + position + "', " + HIRING_DATE_COLUMN + " = '" + dateFormatter.format(hiringDate) + "' WHERE " + EMPLOYEE_ID_COLUMN + " = " + employee_id + ";";
             System.out.println(updateQuery);
             statement.executeUpdate(updateQuery);
 
