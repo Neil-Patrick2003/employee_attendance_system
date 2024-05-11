@@ -18,15 +18,12 @@ public class OvertimeRequest {
     Date endDate;
     String status;
     String notes;
-    int leave_type_id;
     int employee_id;
     Employee employee;
-    LeaveType leaveType;
-    
+
     public static final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
 
-
-    public LeaveRequest(int request_id, Date startDate, Date endDate, String notes, String status, int leave_type_id, int employee_id) {
+    public OvertimeRequest(int request_id, Date startDate, Date endDate, String notes, String status, int employee_id) {
         this.request_id = request_id;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -38,5 +35,5 @@ public class OvertimeRequest {
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
-    
+
 }
