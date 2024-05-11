@@ -88,7 +88,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Neil Patrick\Downloads\icons8-user-90.png"/>
+              <Image iconType="3" name="/com/mycompany/employee_attendance_system/icons/icons8-user-90.png"/>
             </Property>
           </Properties>
         </Component>
@@ -390,7 +390,7 @@
                           <Component id="jPanel7" alignment="0" max="32767" attributes="0"/>
                           <Component id="jPanel10" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="26" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="28" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -468,7 +468,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel10">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="2" name="C:\Users\Neil Patrick\Downloads\icons8-attendance-30.png"/>
+                          <Image iconType="3" name="/com/mycompany/employee_attendance_system/icons/icons8-attendance-30.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="jLabel10"/>
                       </Properties>
@@ -530,13 +530,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="jLabel8">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Neil Patrick\Downloads\icons8-test-account-60 (2).png"/>
-                </Property>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="NameLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -618,9 +611,8 @@
                     <Component class="javax.swing.JLabel" name="jLabel12">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="2" name="C:\Users\Neil Patrick\Downloads\icons8-empty-hourglass-30.png"/>
+                          <Image iconType="3" name="/com/mycompany/employee_attendance_system/icons/icons8-empty-hourglass-30.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="jLabel12"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel13">
@@ -756,7 +748,7 @@
                               <Component id="jLabel16" min="-2" pref="27" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel17" min="-2" pref="136" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="60" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -777,7 +769,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel16">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="2" name="C:\Users\Neil Patrick\Downloads\icons8-profiles-30.png"/>
+                          <Image iconType="3" name="/com/mycompany/employee_attendance_system/icons/icons8-profiles-30.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="jLabel12"/>
                       </Properties>
@@ -797,6 +789,13 @@
                 </Container>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JLabel" name="jLabel8">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/mycompany/employee_attendance_system/icons/icons8-test-account-60 (2).png"/>
+                </Property>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="ProfileTab">
@@ -1439,7 +1438,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="C:\Users\Neil Patrick\Downloads\icons8-plus-30 (2).png"/>
+                      <Image iconType="3" name="/com/mycompany/employee_attendance_system/icons/icons8-plus-30 (2).png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Add Time Off/Leave Request"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1650,7 +1649,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel22">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="2" name="C:\Users\Neil Patrick\Downloads\icons8-employee-30.png"/>
+                          <Image iconType="3" name="/com/mycompany/employee_attendance_system/icons/icons8-employee-30.png"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -1823,7 +1822,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel24">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="2" name="C:\Users\Neil Patrick\Downloads\icons8-leave-30.png"/>
+                          <Image iconType="3" name="/com/mycompany/employee_attendance_system/icons/icons8-leave-30.png"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -1944,7 +1943,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel27">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="2" name="C:\Users\Neil Patrick\Downloads\icons8-timesheet-30.png"/>
+                          <Image iconType="3" name="/com/mycompany/employee_attendance_system/icons/icons8-timesheet-30.png"/>
                         </Property>
                       </Properties>
                     </Component>
