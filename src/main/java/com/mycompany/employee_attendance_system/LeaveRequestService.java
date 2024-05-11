@@ -103,9 +103,9 @@ public class LeaveRequestService {
                 String username = resultSet.getString("username");
                 String password = resultSet.getString("password");
                 Boolean is_admin = resultSet.getBoolean("is_admin");
-                String hiring_date = resultSet.getString("hiring_date");
                 int department_id = resultSet.getInt("department_id");
                 String position = resultSet.getString("position");
+                Date hiring_date = hiring_date = resultSet.getDate("hiring_date");
 
                 Employee employee = new Employee(employee_id, last_name, first_name, email, phone_number, address, username, password, is_admin, hiring_date, department_id, position);
                 leaveRequest.setEmployee(employee);
@@ -176,9 +176,9 @@ public class LeaveRequestService {
                 String username = resultSet.getString("username");
                 String password = resultSet.getString("password");
                 Boolean is_admin = resultSet.getBoolean("is_admin");
-                String hiring_date = resultSet.getString("hiring_date");
                 int department_id = resultSet.getInt("department_id");
                 String position = resultSet.getString("position");
+                Date hiring_date = hiring_date = resultSet.getDate("hiring_date");
 
                 Employee employee = new Employee(employee_id, last_name, first_name, email, phone_number, address, username, password, is_admin, hiring_date, department_id, position);
                 leaveRequest.setEmployee(employee);
@@ -253,9 +253,9 @@ public class LeaveRequestService {
                 String username = resultSet.getString("username");
                 String password = resultSet.getString("password");
                 Boolean is_admin = resultSet.getBoolean("is_admin");
-                String hiring_date = resultSet.getString("hiring_date");
                 int department_id = resultSet.getInt("department_id");
                 String position = resultSet.getString("position");
+                Date hiring_date = hiring_date = resultSet.getDate("hiring_date");
 
                 Employee employee = new Employee(employee_id, last_name, first_name, email, phone_number, address, username, password, is_admin, hiring_date, department_id, position);
                 leaveRequest.setEmployee(employee);
